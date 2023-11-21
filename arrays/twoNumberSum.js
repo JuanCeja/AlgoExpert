@@ -18,14 +18,16 @@
 // Output: [0,1]
 
 function twoNumberSum(arr, target) {
-    // create hashmap that stores the complement
-    // create our results array
-    // iterate through the array
-        // check to see if the complement of the current array value is in our hashmap 
-        // if so we push the values of our current value and its complement to our results array and return it 
-        // else we add the current value to our hashmap
-    // we return false
-
+    let map = {};
+    for (let i = 0; i < arr.length; i++) {
+        const complement = target - arr[i];
+        if (map.hasOwnProperty(complement)) {
+            return [arr[i], map[complement]];
+        } else {
+            map[arr[i]] = arr[i];
+        }
+    };
+    return [];
 };
 
-console.log(twoNumberSum([3, 5, -4, 8, 11, 1, -1, 6])); // [-1, 11]
+console.log(twoNumberSum([3, 5, -4, 8, 11, 1, -1, 6], 10)); // [-1, 11]
