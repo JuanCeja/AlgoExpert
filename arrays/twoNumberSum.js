@@ -18,7 +18,14 @@
 // Output: [0,1]
 
 function twoNumberSum(arr, target) {
-    
+    // create hashmap that stores the complement
+    // create our results array
+    // iterate through the array
+        // check to see if the complement of the current array value is in our hashmap 
+        // if so we push the values of our current value and its complement to our results array and return it 
+        // else we add the current value to our hashmap
+    // we return false
+
 };
 
 console.log(twoNumberSum([3, 5, -4, 8, 11, 1, -1, 6])); // [-1, 11]
