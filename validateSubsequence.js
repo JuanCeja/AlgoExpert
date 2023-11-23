@@ -12,12 +12,15 @@ function isValidSubsequence(array, sequence) {
 };
 
 function isValidSubsequence2(array, sequence) {
-    // create 2 pointers for each array
-    // while loop. while they both exist in their arrays
-        // if pointer at sequence === pointer at array
-            // increment sequence pointer
-        // increment array pointer
-    // if sequence pointer is < sequence length return false else true
+    let p1 = 0;
+    let p2 = 0;
+    while (p1 < array.length && p2 < sequence.length) {
+        if (sequence[p2] === array[p1]) {
+            p2++;
+        }
+        p1++;
+    }
+    return p2 >= sequence.length ? true : false;
 };
 
 console.log(isValidSubsequence([5, 1, 22, 25, 6, -1, 8, 10], [1, 6, -1, 10])); // true
