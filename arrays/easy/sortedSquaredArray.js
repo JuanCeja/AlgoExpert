@@ -5,11 +5,22 @@
 // output will be: [1, 4, 9, 25, 36, 64, 81]
 
 function sortedSquaredArray(array) {
-    // create 2 pointers
-    // create our return array
-    // while loop. left and right until meet
-        // compare left to right. if left is less push left and vise versa, also increment or decrement pointers
-    // return our array
+    let start = 0;
+    let end = array.length - 1;
+    let i = array.length - 1;
+    let squaredArray = Array(array.length).fill(0);
+    while (start <= end) {
+        if (Math.abs(array[start]) > Math.abs(array[end])) {
+            squaredArray[i] = Math.pow(array[start], 2);
+            i--;
+            start++;
+        } else {
+            squaredArray[i] = Math.pow(array[end], 2);
+            i--;
+            end--;
+        };
+    };
+    return squaredArray;
 };
 
 console.log(sortedSquaredArray([1, 2, 3, 5, 6, 8, 9])) // [1, 4, 9, 25, 36, 64, 81]
