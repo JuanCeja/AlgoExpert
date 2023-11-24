@@ -23,4 +23,4 @@ function sortedSquaredArray(array) {
     return squaredArray;
 };
 
-console.log(sortedSquaredArray([1, 2, 3, 5, 6, 8, 9])) // [1, 4, 9, 25, 36, 64, 81]
+console.log(sortedSquaredArray([-7, 1, 2, 3, 5, 6, 8, 9])) // [1, 4, 9, 25, 36, 64, 81]
