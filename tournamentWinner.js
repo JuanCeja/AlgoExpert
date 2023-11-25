@@ -22,32 +22,52 @@
 // Python - 6 points
 
 function tournamentWinner(competitions, results) {
-    let scoreboard = new Map();
-    let pointer = 0;
-    let highestScore = -Infinity;
-    let winningTeam;
+    const leader = { name: '', score: -Infinity };
+    const scoreboard = {};
     for (let i = 0; i < competitions.length; i++) {
-        if (!scoreboard[competitions[i][0]]) scoreboard[competitions[i][0]] = 0;
-        if (!scoreboard[competitions[i][1]]) scoreboard[competitions[i][1]] = 0;
-        if (results[pointer] === 0) {
-            scoreboard[competitions[i][1]] += 3;
-            pointer++;
-        } else if (results[pointer] === 1) {
-            scoreboard[competitions[i][0]] += 3;
-            pointer++;
-        };
-    }
-    Object.entries(scoreboard).forEach(([team, score]) => {
-        if (score > highestScore) {
-            highestScore = score;
-            winningTeam = team;
+        const winnerIdx = results[i] === 0 ? 1 : 0;
+        const winner = competitions[i][winnerIdx];
+
+        if (winner in scoreboard) scoreboard[winner] += 3;
+        else scoreboard[winner] = 3;
+
+        if(leader.score < scoreboard[winner]) {
+            leader.name = winner;
+            leader.score = scoreboard[winner];
         }
-    });
-    return winningTeam;
+    };
+    return leader.name;
 };
+
 
 console.log(tournamentWinner([
     ['HTML', 'C#'],
     ['C#,', 'Python'],
     ['Python', 'HTML'],
 ], [0, 0, 1])); // Python
+
+
+// function tournamentWinner(competitions, results) {
+//     let scoreboard = new Map();
+//     let pointer = 0;
+//     let highestScore = -Infinity;
+//     let winningTeam;
+//     for (let i = 0; i < competitions.length; i++) {
+//         if (!scoreboard[competitions[i][0]]) scoreboard[competitions[i][0]] = 0;
+//         if (!scoreboard[competitions[i][1]]) scoreboard[competitions[i][1]] = 0;
+//         if (results[pointer] === 0) {
+//             scoreboard[competitions[i][1]] += 3;
+//             pointer++;
+//         } else if (results[pointer] === 1) {
+//             scoreboard[competitions[i][0]] += 3;
+//             pointer++;
+//         };
+//     }
+//     Object.entries(scoreboard).forEach(([team, score]) => {
+//         if (score > highestScore) {
+//             highestScore = score;
+//             winningTeam = team;
+//         }
+//     });
+//     return winningTeam;
+// };
