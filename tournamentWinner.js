@@ -22,14 +22,28 @@
 // Python - 6 points
 
 function tournamentWinner(competitions, results) {
-    // create a map to store the points of the team
-    // create a pointer to use on the results array
-    // variable to store highest score
-    // iterate through the competitions
-        // if the team is not on our scoreboard add the team
-        // if current value in result is 0 the team of index 1 gets 3 points
-        // else if the results value is 1 the team of index 0 gets 3 points
-    // return the team with the highest score in our scoreboard
+    let scoreboard = new Map();
+    let pointer = 0;
+    let highestScore = -Infinity;
+    let winningTeam;
+    for (let i = 0; i < competitions.length; i++) {
+        if (!scoreboard[competitions[i][0]]) scoreboard[competitions[i][0]] = 0;
+        if (!scoreboard[competitions[i][1]]) scoreboard[competitions[i][1]] = 0;
+        if (results[pointer] === 0) {
+            scoreboard[competitions[i][1]] += 3;
+            pointer++;
+        } else if (results[pointer] === 1) {
+            scoreboard[competitions[i][0]] += 3;
+            pointer++;
+        };
+    }
+    Object.entries(scoreboard).forEach(([team, score]) => {
+        if (score > highestScore) {
+            highestScore = score;
+            winningTeam = team;
+        }
+    });
+    return winningTeam;
 };
 
 console.log(tournamentWinner([
