@@ -40,13 +40,16 @@ function merge(left, right) {
 function nonConstructibleChange(coins) {
     let sortedCoins = mergeSort(coins);
     let change = 0;
+    if (sortedCoins[0] > 1) return 1;
     for (let i = 0; i < sortedCoins.length; i++) {
-        if(sortedCoins[i] > change + 1) {
+        if (sortedCoins[i] > change + 1) {
             return change + 1;
         } else {
             change += sortedCoins[i];
         }
     };
+    return change + 1;
 };
 
 console.log(nonConstructibleChange([5, 7, 1, 1, 2, 3, 22])); // 20
+console.log(nonConstructibleChange([5, 7, 1, 1, 2, 3, 16])); // 36
