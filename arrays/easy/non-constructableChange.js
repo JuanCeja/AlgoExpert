@@ -17,8 +17,8 @@ function merge(left, right) {
     let p1 = 0;
     let p2 = 0;
     let sortedArray = [];
-    while(p1 < left.length && p2 < right.length) {
-        if(left[p1] < right[p2]) {
+    while (p1 < left.length && p2 < right.length) {
+        if (left[p1] < right[p2]) {
             sortedArray.push(left[p1]);
             p1++;
         } else {
@@ -26,11 +26,11 @@ function merge(left, right) {
             p2++;
         }
     };
-    while(p1 < left.length) {
+    while (p1 < left.length) {
         sortedArray.push(left[p1]);
         p1++;
     };
-    while(p2 < right.length) {
+    while (p2 < right.length) {
         sortedArray.push(right[p2]);
         p2++;
     };
@@ -38,7 +38,15 @@ function merge(left, right) {
 };
 
 function nonConstructibleChange(coins) {
-    sortedCoins = mergeSort(coins);
+    let sortedCoins = mergeSort(coins);
+    let change = 0;
+    for (let i = 0; i < sortedCoins.length; i++) {
+        if(sortedCoins[i] > change + 1) {
+            return change + 1;
+        } else {
+            change += sortedCoins[i];
+        }
+    };
 };
 
 console.log(nonConstructibleChange([5, 7, 1, 1, 2, 3, 22])); // 20
