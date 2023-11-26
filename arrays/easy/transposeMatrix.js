@@ -36,7 +36,10 @@
 // ]
 
 function transposeMatrix(matrix) {
-    
+    // create an array to return
+    // iterate through our matrix
+    // per iteration in our inner array we push a new array of its index
+    // return our finished array
 };
 
 console.log(transposeMatrix([
