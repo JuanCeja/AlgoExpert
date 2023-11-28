@@ -39,9 +39,9 @@ function transposeMatrix(matrix) {
     let array = [];
 
     for (let i = 0; i < matrix.length; i++) {
-        array.push([]);
         for (let j = 0; j < matrix[i].length; j++) {
-            array[i].push(matrix[j][i]);
+            if(array[j] === undefined) array.push([]);
+            array[j].push(matrix[i][j]);
         }
     }
     return array;
