@@ -36,15 +36,15 @@
 // ]
 
 function transposeMatrix(matrix) {
-    let array = [];
+    let res = [];
 
     for (let i = 0; i < matrix.length; i++) {
         for (let j = 0; j < matrix[i].length; j++) {
-            if(array[j] === undefined) array.push([]);
-            array[j].push(matrix[i][j]);
+            if (res[j] === undefined) res.push([]);
+            res[j].push(matrix[i][j]);
         }
     }
-    return array;
+    return res;
 };
 
 console.log(transposeMatrix([
