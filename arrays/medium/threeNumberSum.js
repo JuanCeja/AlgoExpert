@@ -40,7 +40,25 @@ function merge(arr1, arr2) {
 
 function threeNumberSum(array, targetSum) {
     let sortedArray = mergeSort(array);
-    
+    let results = [];
+
+    for (let i = 0; i < sortedArray.length; i++) {
+        let start = i + 1;
+        let end = sortedArray.length - 1;
+        while (start < end) {
+            let total = sortedArray[i] + sortedArray[start] + sortedArray[end];
+            if (total === targetSum) {
+                results.push([sortedArray[i], sortedArray[start], sortedArray[end]]);
+                start++;
+                end--;
+            } else if (total < targetSum) {
+                start++;
+            } else {
+                end--;
+            }
+        };
+    };
+    return results;
 };
 
 console.log(threeNumberSum([12, 3, 1, 2, -6, 5, -8, 6], 0)) // [[-8, 2, 6], [-8, 3, 5], [-6, 1, 5]]
