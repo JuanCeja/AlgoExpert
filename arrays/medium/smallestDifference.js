@@ -43,7 +43,24 @@ function merge(arr1, arr2) {
 };
 
 function smallestDifference(arrayOne, arrayTwo) {
+    let pair = [];
+    let smallestDifference = Infinity;
+    let p1 = 0;
+    let p2 = 0;
+    let sortedOne = mergeSort(arrayOne);
+    let sortedTwo = mergeSort(arrayTwo);
 
+    while (p1 < sortedOne.length && p2 < sortedTwo.length) {
+        if (Math.abs(sortedOne[p1] - sortedTwo[p2]) === 0) return [sortedOne[p1], sortedTwo[p2]];
+        if (Math.abs(sortedOne[p1] - sortedTwo[p2]) < smallestDifference) {
+            smallestDifference = Math.abs(sortedOne[p1] - sortedTwo[p2]);
+            pair[0] = sortedOne[p1];
+            pair[1] = sortedTwo[p2];
+        };
+        if (sortedOne[p1] < sortedTwo[p2]) p1++;
+        else p2++;
+    };
+    return pair;
 };
 
 console.log(smallestDifference([-1, 5, 10, 20, 28, 3], [26, 134, 135, 15, 17])); // [28, 26]
