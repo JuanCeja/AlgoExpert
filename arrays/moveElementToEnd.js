@@ -8,10 +8,14 @@
 // Sample Output: [1, 3, 4, 2, 2, 2, 2, 2]
 
 function moveElementToEnd(array, toMove) {
-    // create a pointer
-    // iterate the array
-        // if current value at index does not equal target we swap it
-    // return our array
+    let pointer = 0;
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] !== toMove) {
+            [array[pointer], array[i]] = [array[i], array[pointer]];
+            pointer++;
+        }
+    };
+    return array;
 };
 
 console.log(moveElementToEnd([2, 1, 2, 2, 2, 3, 4, 2], 2)); // [1, 3, 4, 2, 2, 2, 2, 2]
