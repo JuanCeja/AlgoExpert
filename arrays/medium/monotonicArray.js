@@ -11,13 +11,23 @@
 // Sample Output = True;
 
 function isMonotonic(array) {
-    // create our base case
-    // create a hashtable that stores decreasing and increasing
-    // iterate our array using a for loop
-        // create variable that sees the next element
-        // if current index value is smaller than the next value change decreasing to true on the hashtable
-        // if current index value is larger than the next value change increasing to true on the hashtable
-    // is both are true return false else true
+    if (array.length <= 1) return true;
+    
+    let hashtable = {
+        decreasing: null,
+        increasing: null
+    };
+
+    for (let i = 0; i < array.length; i++) {
+        let nextValue = i + 1;
+        if (hashtable.decreasing === true && hashtable.increasing === true) return false;
+        if (array[i] < array[nextValue]) {
+            hashtable.increasing = true;
+        } else if (array[i] > array[nextValue]) {
+            hashtable.decreasing = true;
+        };
+    };
+    return hashtable.decreasing === true && hashtable.increasing === true ? false : true;
 };
 
 console.log(isMonotonic([-1, -5, -10, -1100, -1100, -1101, -1102, -9001])); // True
