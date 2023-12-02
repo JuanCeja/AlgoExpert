@@ -12,10 +12,22 @@
 
 const longestPeak = (array) => {
     // maxPeak tracker
+    // keep a counter
+    let highestPeak = 0;
+    let counter = 0;
     // iterate through the array
-        // keep a counter 
+    for(let i = 0; i < array.length; i++) {
+        counter++;
+        let prev = i - 1;
+        let next = i + 1;
+        highestPeak = Math.max(highestPeak, counter);
         // if the current element is a peak reset counter
+        if(array[i] > array[prev] && array[i] > array[next]) {
+            counter = 0;
+        };
+    };
     // return maxPeak
+    return highestPeak;
 };
 
 console.log(longestPeak([1, 2, 3, 4, 0, 10, 6, 5, -1, -3, 2, 3]));
