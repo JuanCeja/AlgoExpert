@@ -11,13 +11,24 @@
 // 6 because 0,  10, 6, 5, -1, -3
 
 const longestPeak = (array) => {
-    let longestPeak = 0;
-    let counter = 0;
-    for(let i = 1; i < array.length; i++) { 
-        if(array[i] > array[i - 1] && array[i] > array[i + 1]) {
-
-        }
+  let longestPeak = 0;
+  let counter = 1;
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] > array[i - 1] && array[i] > array[i + 1]) {
+      let j = i;
+      let k = i;
+      while (array[j] > array[j - 1]) {
+        counter++;
+        j--;
+      }
+      while (array[k] > array[k - 1]) {
+        counter++;
+        k++;
+      }
     }
+    longestPeaking = Math.max(counter, longestPeak);
+  }
+  return longestPeak;
 };
 
 console.log(longestPeak([1, 2, 3, 4, 0, 10, 6, 5, -1, -3, 2, 3]));
