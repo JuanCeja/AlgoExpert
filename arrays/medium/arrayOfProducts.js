@@ -16,7 +16,13 @@
 // 20 is equal to 5 x 1 x 4
 
 function arrayOfProducts(array) {
-    
+    // create our index to iterate
+    // use a while loop
+        // value is our current index value
+        // while theres a left value multiply to the left
+        // while theres a right value multiply to the right
+        // increase our index
+    // return our array
 };
 
 console.log(arrayOfProducts([5, 1, 4, 2]));
