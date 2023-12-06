@@ -16,13 +16,17 @@
 // 20 is equal to 5 x 1 x 4
 
 function arrayOfProducts(array) {
-    // create our index to iterate
-    // use a while loop
-        // value is our current index value
-        // while theres a left value multiply to the left
-        // while theres a right value multiply to the right
-        // increase our index
-    // return our array
+    let result = [];
+    let product = 1;
+    for (let i = 0; i < array.length; i++) {
+        for (let j = 0; j < array.length; j++) {
+            if (i === j) continue;
+            product = product * array[j];
+        };
+        result.push(product);
+        product = 1;
+    };
+    return result;
 };
 
-console.log(arrayOfProducts([5, 1, 4, 2]));
+console.log(arrayOfProducts([5, 1, 4, 2])); // [8, 40, 10, 20]
