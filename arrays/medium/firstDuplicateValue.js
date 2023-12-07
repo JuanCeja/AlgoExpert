@@ -23,11 +23,17 @@
 // 3 is the first integer that appears more than once. 2 also appears more than once, but the second 2 appears after the second 3.
 
 function firstDuplicateValue(array) {
-    // create a map to store pairs
-    // iterate through the array
-        // check to see if the value is in the array. if it is increase the count and return the value
-        // else add it to our map with a value of 1
-    // return -1
+    let map = {};
+    for (let i = 0; i < array.length; i++) {
+        if (map[array[i]]) {
+            map[array[i]]++;
+            return array[i];
+        } else {
+            map[array[i]] = 1;
+            ;
+        }
+    };
+    return -1;
 };
 
 console.log(firstDuplicateValue([2, 1, 5, 2, 3, 3, 4])); // 2
