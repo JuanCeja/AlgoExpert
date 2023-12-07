@@ -18,19 +18,20 @@
 function arrayOfProducts(array) {
     let n = array.length;
     let result = new Array(n).fill(0);
-    let left = new Array(n).fill(1);
-    let right = new Array(n).fill(1);
+    let left = new Array(n).fill(0);
+    let right = new Array(n).fill(0);
     let product = 1;
+
     for (let i = 0; i < n; i++) {
         left[i] = product;
         product *= array[i];
     };
+
     product = 1;
+
     for (let i = n - 1; i >= 0; i--) {
         right[i] = product;
         product *= array[i];
-    };
-    for (let i = 0; i < n; i++) {
         result[i] = left[i] * right[i];
     };
     return result;
