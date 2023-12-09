@@ -23,7 +23,11 @@
 // 3 is the first integer that appears more than once. 2 also appears more than once, but the second 2 appears after the second 3.
 
 function firstDuplicateValue(array) {
-
+    // create our var
+    // iterate through our array
+        // calculate our index. 
+        // if that value is already negative return the value else make it a negative value
+    // return -1 if no duplicates are found
 };
 
 console.log(firstDuplicateValue([2, 1, 5, 2, 3, 3, 4])); // 2
