@@ -13,7 +13,13 @@
 // [[1, 2], [3, 8], [9, 10]]
 
 const mergeOverlappingIntervals = (array) => {
-    
+    // create empty output array
+    // iterate our input array
+        // if we find a interval that doesnt overlap with our last interval in our output array we just add it directly to our output array
+        // else if it does loverlap we merge them. we merge them by comparing the ends and choosing the larger value and modifying the last interval in our output array.
+    // return our output array
 };
+
+
 
 console.log(mergeOverlappingIntervals([[1, 2], [3, 5], [4, 7], [6, 8], [9, 10]])); // [[1, 2], [3, 8], [9, 10]]
