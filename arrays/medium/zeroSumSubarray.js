@@ -9,7 +9,14 @@
 // True -- The subarray [-5, 2, 3] has a sum of 0
 
 const zeroSumSubarray = (nums) => {
-
+    for (let i = 0; i < nums.length; i++) {
+        let sum = 0;
+        for (let j = i; j < nums.length; j++) {
+            sum += nums[j];
+            if (sum === 0) return true;
+        }
+    }
+    return false;
 };
 
 console.log(zeroSumSubarray([-5, -5, 2, 3, -2])); // True
