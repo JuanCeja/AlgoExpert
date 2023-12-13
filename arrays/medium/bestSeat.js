@@ -14,7 +14,7 @@ const bestSeat = (seats) => {
     // create variables to store bestSeat, leftSpace, rightSpace, and counter
     let bestSeat;
     let biggestSpace = 0;
-    let counter = 0;
+    let counter = -Infinity;
 
     // iterate through the array starting at 1 and ending at 1 before the end
     for (let i = 1; i < seats.length - 2; i++) {
@@ -22,13 +22,23 @@ const bestSeat = (seats) => {
         let leftSeat = i - 1;
         let rightSeat = i + 1;
         // create a while loop that goes left and right if they are empty
-        // if the left seat is empty and right is empty move both seats and increment counter by 2.
-            // if counter > biggestSpace
-                // set bestSeat to current index
+        while(seats[leftSeat] === 0 && seats[rightSeat] === 0) {
+            // if the left seat is empty and right is empty move both seats and increment counter by 2.
+            leftSeat--;
+            rightSeat++;
+            counter += 2;
+        };
+
+        // if counter > biggestSpace
+        if(counter > biggestSpace) {
+            // set bestSeat to current index
+            bestSeat = i;
+        }
         // else set counter back to 0
+        else counter = 0;
     };
     // return bestSeat
-
+    return bestSeat;
 };
 
 console.log(bestSeat([1, 0, 1, 0, 0, 0, 1])); // 4
