@@ -13,13 +13,22 @@
 // [[1, 2], [3, 8], [9, 10]]
 
 const mergeOverlappingIntervals = (array) => {
-    // first we sort our input array
-    // we create our result array with our first value from our sorted array
-    // we loop trough our sortedArray started at 1
-        // create variables to store currentEnd, lastOfResult and nextFirst
-        // if currentEnd < nextFirst
-            // push the interval to our result
-        // else the second value of our lastOfResult interval is set to the greater value of currentEnd and nextFirst
+    sortedIntervals = array.sort((a, b) => a[0] - b[0]);
+    let result = [sortedIntervals[0]];
+
+    for (let i = 1; i < sortedIntervals.length; i++) {
+        let prevEnd = result[result.length - 1][1];
+        let currentStart = sortedIntervals[i][0];
+        let last = result.length - 1;
+
+        if (prevEnd < currentStart) {
+            result.push(sortedIntervals[i]);
+        } else {
+            result[last][1] = Math.max(sortedIntervals[i][1], prevEnd);
+        };
+    };
+
+    return result;
 };
 
 console.log(mergeOverlappingIntervals([[1, 2], [3, 5], [4, 7], [6, 8], [9, 10]])); // [[1, 2], [3, 8], [9, 10]]
