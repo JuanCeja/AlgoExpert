@@ -11,14 +11,20 @@
 // 4
 
 const bestSeat = (seats) => {
-    // left, right pointer, bestSeat, maxSpace
-    // use a while loop. as long as right is in bounds
-        // move right pointer until we hit a 1
-            // calculate space and see if its bigger than maxSpace if so
-                // save best seat index
-        // left = right
-        // right = left + 1
-    // return bestSeat
+    let beatSeat = -1;
+    let currentSpace = 0;
+    let maxSpace = 0;
+    for (let i = 0; i < seats.length; i++) {
+        if (seats[i] === 1) currentSpace = 0;
+        else {
+            currentSpace++;
+            if (currentSpace > maxSpace) {
+                maxSpace = currentSpace;
+                beatSeat = i - Math.floor(currentSpace / 2)
+            }
+        }
+    }
+    return beatSeat;
 };
 
 console.log(bestSeat([1, 0, 1, 0, 0, 0, 1])); // 4
