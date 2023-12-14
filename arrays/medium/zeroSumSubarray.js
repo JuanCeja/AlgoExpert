@@ -9,14 +9,17 @@
 // True -- The subarray [-5, 2, 3] has a sum of 0
 
 const zeroSumSubarray = (nums) => {
-    // set
-    // sumOfSubarray
-    // iterate through nums
-        // if value = 0 return true
-        // else we add current value to sumOfSubarray
-        // if value exists in set return true
-        // else add it to the set
-    // return false
+    let mySet = new Set();
+    let sumOfSubarray = 0;
+    
+    for(let i = 0; i < nums.length; i++) {
+        if(nums[i] === 0) return true;
+        sumOfSubarray += nums[i];
+        if(sumOfSubarray === 0) return true;
+        if(mySet.has(sumOfSubarray)) return true;
+        else mySet.add(sumOfSubarray);
+    };
+    return false;
 };
 
 console.log(zeroSumSubarray([-5, -5, 2, 3, -2])); // True
