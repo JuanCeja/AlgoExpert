@@ -11,14 +11,12 @@
 const zeroSumSubarray = (nums) => {
     let mySet = new Set();
     let sumOfSubarray = 0;
-    
-    for(let i = 0; i < nums.length; i++) {
-        if(nums[i] === 0) return true;
-        sumOfSubarray += nums[i];
-        if(sumOfSubarray === 0) return true;
+
+    for(const n of nums) {
+        mySet.add(sumOfSubarray);
+        sumOfSubarray += n;
         if(mySet.has(sumOfSubarray)) return true;
-        else mySet.add(sumOfSubarray);
-    };
+    }
     return false;
 };
 
