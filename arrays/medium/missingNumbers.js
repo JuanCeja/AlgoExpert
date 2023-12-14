@@ -9,13 +9,16 @@
 // [2, 5]-- n is 5, meaning the completed list should be [1, 2, 3, 4, 5]
 
 const missingNumbers = (nums) => {
-    let mySet = new Set();
+    nums.push(1);
+    nums.push(1);
     let result = [];
-    for(let i = 1; i < nums.length + 3; i++) {
-        mySet.add(i);
+    for (let i = 0; i < nums.length - 2; i++) {
+        let num = Math.abs(nums[i]);
+        nums[num - 1] = nums[num - 1] * -1;
     };
-    for(let num of nums) mySet.delete(num);
-    for(let value of mySet) result.push(value);
+    for (let j = 0; j < nums.length; j++) {
+        if(nums[j] > 0) result.push(j + 1);
+    };
     return result;
 };
 
