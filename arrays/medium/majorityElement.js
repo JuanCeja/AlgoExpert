@@ -11,16 +11,18 @@
 // 2 --> 2 occurs in 4/7 array indices, making it the majority element
 
 function majorityElement(array) {
+    // answer
+    // count
     // current
-    // while current in array
-    // counter = 1
-        // inner for loop to iterate
-            // if current value === i
-                // counter++
-            // else counter--
-            // if counter === 0
-                // break out of loop
-        // if counter > 1 return array[current]
+    // while loop
+        // answer = current
+        // inner for loop starting current + 1
+            // if current === i
+                // count++
+            // else count--
+            // if count === 0 break
+                // current = i
+        // count > 1 return answer
 };
 
 console.log(majorityElement([1, 2, 3, 2, 2, 1, 2])); // 2
