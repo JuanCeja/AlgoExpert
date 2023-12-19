@@ -30,7 +30,16 @@
 // [-25, 5] -- this pairing gets the exact combined profile of -20
 
 const sweetAndSavory = (dishes, target) => {
-    
+    // sort the array using mergeSort
+    // create 2 arrays sweet/savory
+    // create 2 pointers sweet/savory
+    // combinedFlavor
+    // while loop
+        // if combinedFlavor = target return pointers
+        // elif combinedFlavor < target
+            // move up savory
+        // else move up sweet
+    // return [0, 0]
 };
 
 console.log(sweetAndSavory([-3, -5, 1, 7], 8)); // [-3, 7]
