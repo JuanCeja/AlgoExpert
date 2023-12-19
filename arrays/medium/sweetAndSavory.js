@@ -30,16 +30,70 @@
 // [-25, 5] -- this pairing gets the exact combined profile of -20
 
 const sweetAndSavory = (dishes, target) => {
-    // sort the array using mergeSort
     // create 2 arrays sweet/savory
     // create 2 pointers sweet/savory
     // combinedFlavor
+    let combinedFlavor;
+    let sweet = 0;
+    let savory = 0;
+    let sweetDishes = [];
+    let savoryDishes = [];
+
+    let sortedDishes = mergeSort(dishes);
+    
+    for (let dish of sortedDishes) {
+        if (dish < 0) sweetDishes.push(dish);
+        else savoryDishes.push(dish);
+    };
+
     // while loop
-        // if combinedFlavor = target return pointers
-        // elif combinedFlavor < target
-            // move up savory
-        // else move up sweet
+    while(true) {
+        if(sweetDishes[sweet] + savoryDishes[savory] === target) {
+            return [sweet, savory];
+        }
+        if(savoryDishes[savory] < target) {
+            savory++;
+        } else {
+
+        }
+    }
+    // if combinedFlavor = target return pointers
+    // elif combinedFlavor < target
+    // move up savory
+    // else move up sweet
     // return [0, 0]
+};
+
+const mergeSort = (array) => {
+    if (array.length <= 1) return array;
+    let mid = Math.floor(array.length / 2);
+    let left = mergeSort(array.slice(0, mid));
+    let right = mergeSort(array.slice(mid));
+    return merge(left, right);
+};
+
+const merge = (arr1, arr2) => {
+    let result = [];
+    let i = 0;
+    let j = 0;
+    while (i < arr1.length && j < arr2.length) {
+        if (arr1[i] < arr2[j]) {
+            result.push(arr1[i]);
+            i++;
+        } else {
+            result.push(arr2[j]);
+            j++;
+        }
+    };
+    while (i < arr1.length) {
+        result.push(arr1[i]);
+        i++;
+    };
+    while (j < arr2.length) {
+        result.push(arr2[j]);
+        j++;
+    };
+    return result;
 };
 
 console.log(sweetAndSavory([-3, -5, 1, 7], 8)); // [-3, 7]
