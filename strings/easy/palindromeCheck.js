@@ -6,11 +6,15 @@
 // sample output: true
 
 const isPalindrome = (str) => {
-    // left and right pointers
-    // while loop left < right
-        // if pointers match move left up and right down
-        // else return false
-    // return true
+    let left = 0;
+    let right = str.length - 1;
+    while (left < right) {
+        if (str[left] === str[right]) {
+            left++;
+            right--;
+        } else return false;
+    };
+    return true;
 };
 
 console.log(isPalindrome('abcdcba')) // true
