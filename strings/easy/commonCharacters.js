@@ -9,7 +9,12 @@
 // ['b', 'c']
 
 const commonCharacters = (strings) => {
+    // hashmap to keep track of letters and in how many strings weve seen it in
     
+    // for loop
+    // convert string to set to remove duplicates
+    // iterate our set
+        // 
 };
 
 console.log(commonCharacters(['abc', 'bcd', 'cbaccd'])); // ['b', 'c']
