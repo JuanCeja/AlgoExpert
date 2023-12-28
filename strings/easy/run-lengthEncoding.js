@@ -11,7 +11,22 @@
 // 9A4A2B4C2D
 
 const runLengthEncoding = (string) => {
-
+    // prev = str[1]
+    // counter = 1
+    // encoding
+    // iterate string
+        // if prev !== current element
+            // encoding concat counter
+            // encoding concat prev
+            // counter = 1
+        // if prev === current string element
+            // counter++
+            // prev = current element
+            // if counter > 9
+                // encoding concat counter
+                // encoding concat prev
+                // counter = 1
+    // return encoding
 };
 
 console.log(runLengthEncoding('AAAAAAAAAAAAABBCCCCDD')); // 9A4A2B4C2D
