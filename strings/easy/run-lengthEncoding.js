@@ -10,23 +10,25 @@
 // Sample Output:
 // 9A4A2B4C2D
 
-const runLengthEncoding = (string) => {
-    // prev = str[1]
-    // counter = 1
-    // encoding
-    // iterate string
-        // if prev !== current element
-            // encoding concat counter
-            // encoding concat prev
-            // counter = 1
-        // if prev === current string element
-            // counter++
-            // prev = current element
-            // if counter > 9
-                // encoding concat counter
-                // encoding concat prev
-                // counter = 1
-    // return encoding
+const runLengthEncoding = (str) => {
+    let counter = 1;
+    let prev = str[0];
+    let encoding = '';
+    for (let i = 1; i < str.length; i++) {
+        if (str[i] !== prev) {
+            encoding = encoding.concat(counter.toString(), prev);
+            counter = 1;
+        } else {
+            counter++
+            if (counter >= 9) {
+                encoding = encoding.concat(counter.toString(), prev);
+                counter = 0;
+            };
+        };
+        prev = str[i];
+    };
+    encoding = encoding.concat(counter.toString(), prev);
+    return encoding;
 };
 
 console.log(runLengthEncoding('AAAAAAAAAAAAABBCCCCDD')); // 9A4A2B4C2D
