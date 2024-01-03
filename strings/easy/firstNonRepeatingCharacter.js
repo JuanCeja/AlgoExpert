@@ -11,15 +11,15 @@
 
 const firstNonRepeatingCharacter = (string) => {
     let hashmap = {};
-    let index = Infinity;
+    for (let s of string) {
+        if (!hashmap[s]) hashmap[s] = 1;
+        else hashmap[s]++;
+    };
+
     for (let i = 0; i < string.length; i++) {
-        if (!hashmap[string[i]]) hashmap[string[i]] = i;
-        else delete hashmap[string[i]];
+        if (hashmap[string[i]] === 1) return i;
     };
-    for (let char in hashmap) {
-        index = Math.min(index, hashmap[char]);
-    };
-    return index;
+    return -1;
 };
 
 console.log(firstNonRepeatingCharacter("abcdcaf")); // 1
