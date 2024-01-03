@@ -13,7 +13,15 @@
 // Sample Output: True
 
 const generateDocument = (characters, document) => {
-
+    // if length is different return false
+    // create two pointers
+    // create 2 maps
+    // iterate both maps
+        // if char does not exist in map add it and equal to 1
+        // else increment
+    // iterate both maps
+        // compare counts of specific char. if its different return false
+    // return true
 };
 
 console.log(generateDocument("Bste!hetsi ogEAxpelrt x ", "AlgoExpert is the Best!")); // true
