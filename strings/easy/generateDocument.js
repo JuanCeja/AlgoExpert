@@ -14,19 +14,17 @@
 
 const generateDocument = (characters, document) => {
     let charactersMap = {};
-    let documentMap = {};
 
-    for (let i = 0; i < characters.length; i++) {
-        if (!charactersMap[characters[i]]) charactersMap[characters[i]] = 1;
-        else charactersMap[characters[i]]++;
-        if (!documentMap[document[i]]) documentMap[document[i]] = 1;
-        else documentMap[document[i]]++;
-    };
+    for (let ch of characters) {
+        if (!charactersMap[ch]) charactersMap[ch] = 1;
+        else charactersMap[ch]++;
+    }
 
-    for (let key in charactersMap) {
-        if (charactersMap[key] === documentMap[key]) return true;
-    };
-    return false;
+    for (let ch of document) {
+        if (!charactersMap[ch] || charactersMap[ch] === 0) return false;
+        else charactersMap[ch]--;
+    }
+    return true;
 };
 
 console.log(generateDocument("Bste!hetsi ogEAxpelrt x ", "AlgoExpert is the Best!")); // true
