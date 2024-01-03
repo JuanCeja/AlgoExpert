@@ -12,8 +12,8 @@ const commonCharacters = (strings) => {
     let hashmap = {};
     let result = [];
 
-    for (let i = 0; i < strings.length; i++) {
-        let mySet = new Set(strings[i]);
+    for (let string of strings) {
+        let mySet = new Set(string);
 
         for (let value of mySet) {
             if (hashmap[value]) hashmap[value]++;
