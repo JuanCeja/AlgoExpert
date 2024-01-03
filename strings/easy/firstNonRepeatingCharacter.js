@@ -10,12 +10,16 @@
 // Sample Output: 1 // The first non-repeating characters is "b" and is found at index 1
 
 const firstNonRepeatingCharacter = (string) => {
-    // counter hashmap
-    // iterate string
-        // if char does not exist in map add it with its index
-        // if char does exist delete that item
-    // iterate the hashmap
-        // return the value of the key
+    let hashmap = {};
+    let index = Infinity;
+    for (let i = 0; i < string.length; i++) {
+        if (!hashmap[string[i]]) hashmap[string[i]] = i;
+        else delete hashmap[string[i]];
+    };
+    for (let char in hashmap) {
+        index = Math.min(index, hashmap[char]);
+    };
+    return index;
 };
 
 console.log(firstNonRepeatingCharacter("abcdcaf")); // 1
