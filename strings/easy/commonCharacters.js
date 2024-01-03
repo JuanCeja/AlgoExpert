@@ -9,17 +9,22 @@
 // ['b', 'c']
 
 const commonCharacters = (strings) => {
-    // hashmap to keep track of letters and in how many strings weve seen it in
-    // result array
-    
-    // for loop
-    // convert string to a set to remove duplicates
-    // iterate our set
-        // if it exists increment by 1
-        // if it does not create it in the hashmap
-    // iterate our hashmap
-        // if the value is === to our length of the array push the character to our result array
-    // return our result array
+    let hashmap = {};
+    let result = [];
+
+    for (let i = 0; i < strings.length; i++) {
+        let mySet = new Set(strings[i]);
+
+        for (let value of mySet) {
+            if (hashmap[value]) hashmap[value]++;
+            else hashmap[value] = 1;
+        };
+    };
+
+    for (let key in hashmap) {
+        if (hashmap[key] === strings.length) result.push(key);
+    };
+    return result;
 };
 
 console.log(commonCharacters(['abc', 'bcd', 'cbaccd'])); // ['b', 'c']
