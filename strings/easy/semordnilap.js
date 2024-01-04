@@ -14,7 +14,7 @@ const semordnilap = (words) => {
     let result = [];
     for (let word of words) {
         let reversed = word.split('').reverse().join('');
-        if (wordsSet.has(reversed)) {
+        if (wordsSet.has(reversed) && reversed !== word) {
             result.push([word, reversed]);
             wordsSet.delete(word, reversed);
         };
