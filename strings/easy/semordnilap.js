@@ -10,7 +10,13 @@
 // Sample Output: [['diaper', 'repaid'], ['abc', 'cba']]
 
 const semordnilap = (words) => {
-
+    // create a set 
+    // result array
+    // iterate the array
+        // see if the word reversed exists in set. 
+            // push the current word and reversed word into the result array
+            // delete the reverse version from the set
+    // return result
 };
 
 console.log(semordnilap(['diaper', 'abc', 'test', 'cba', 'repaid'])); // [['diaper', 'repaid'], ['abc', 'cba']]
