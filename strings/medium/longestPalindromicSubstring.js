@@ -23,14 +23,19 @@ const isPalindrome = (string) => {
 };
 
 const longestPalindromicSubstring = (string) => {
-    // longest palindrome
-    // longest length
-    // iterate string
-        // iterate for substring
-        // substring = 
-        // if substring is palindrome && > longest palindrome length
-            // longest palindrome length = substring
-    // return substring
+    let longestPalindrome;
+    let longestLength = -Infinity;
+    let substring;
+    for (let i = 0; i < string.length; i++) {
+        for (let j = i + 1; j <= string.length; j++) {
+            substring = string.slice(i, j);
+            if (isPalindrome(substring) && substring.length > longestLength) {
+                longestPalindrome = substring;
+                longestLength = substring.length;
+            }
+        }
+    }
+    return longestPalindrome;
 };
 
-console.log("abaxyzzyxf"); // "xyzzyx"
+console.log((longestPalindromicSubstring("abaxyzzyxf"))); // "xyzzyx"
