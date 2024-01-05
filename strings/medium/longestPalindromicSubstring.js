@@ -23,24 +23,27 @@ const isPalindrome = (string) => {
 };
 
 const longestPalindromicSubstring = (string) => {
-    // longest p length
-    // longest palindrome
-    // substring
-    // iterate string
-        // left and right
-        // substring
-        // if left === right
-            // while left === right
-                // left-- right++
-                // if substring.length > longest p length
-                    // longest palindrome = substring
-        // if string[i] === left
-            // right = i
-            // while(left === right)
-                // left-- right++
-                // if substring.length > longest p length
-                    // longest palindrome = substring
-    // return longest palindrome
+    let answer = string[0];
+
+    for (let i = 1; i < string.length - 1; i++) {
+        if (string[i - 1] === string[i + 1] || string[i] === string[i + 1]) {
+            let left = i; let right = i;
+
+            while (string[i] === string[right + 1]) {
+                right++;
+            }
+
+            while (string[left] === string[right] && left >= 0 && right < string.length) {
+                const potentialAnswer = string.slice(left, right + 1);
+                if (potentialAnswer.length > answer.length) {
+                    answer = potentialAnswer;
+                }
+                left--;
+                right++;
+            }
+        }
+    }
+    return answer;
 };
 
 console.log((longestPalindromicSubstring("abaxyzzyxf"))); // "xyzzyx"
