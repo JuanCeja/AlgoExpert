@@ -28,8 +28,19 @@ const longestPalindromicSubstring = (string) => {
     // substring
     // iterate string
         // left and right
-        // while left === right
-            // 
+        // substring
+        // if left === right
+            // while left === right
+                // left-- right++
+                // if substring.length > longest p length
+                    // longest palindrome = substring
+        // if string[i] === left
+            // right = i
+            // while(left === right)
+                // left-- right++
+                // if substring.length > longest p length
+                    // longest palindrome = substring
+    // return longest palindrome
 };
 
 console.log((longestPalindromicSubstring("abaxyzzyxf"))); // "xyzzyx"
