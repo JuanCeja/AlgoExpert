@@ -12,7 +12,17 @@
 
 
 const longestPalindromicSubstring = (string) => {
-    
+    // answer
+    // iterate string
+        // left and right
+        // while left === right
+            // increase the right
+        // while left === right and is in bounds
+            // if string slice left and right > answer length
+                // answer = to our slice
+            // left -- right++
+    // return answer 
+
 };
 
 console.log((longestPalindromicSubstring("abaxyzzyxf"))); // "xyzzyx"
