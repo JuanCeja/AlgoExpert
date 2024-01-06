@@ -11,7 +11,15 @@
 // [["yo", "oy"], ["flop", "olfp"], ["act", "tac", "cat"], ["foo"]]
 
 const groupAnagrams = (words) => {
-    
+    // create an array of objects for every word\
+    // let result
+    // iterate our array of objects
+        // let group with current element
+        // compare our current obj to all to other objs by iterating
+            // if its a match
+                // push to group
+                // splice out what we pushed
+    // return result
 };
 
 console.log(groupAnagrams(["yo", "act", "flop", "tac", "foo", "cat", "oy", "olfp"]));
