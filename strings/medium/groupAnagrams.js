@@ -11,15 +11,20 @@
 // [["yo", "oy"], ["flop", "olfp"], ["act", "tac", "cat"], ["foo"]]
 
 const groupAnagrams = (words) => {
-    // create an array of objects for every word\
-    // let result
-    // iterate our array of objects
-        // let group with current element
-        // compare our current obj to all to other objs by iterating
-            // if its a match
-                // push to group
-                // splice out what we pushed
-    // return result
+    let hashmap = {};
+    let result = [];
+    let sortedArrayOfWords = words.map(word => word.split('').sort().join(''));
+
+    for (let i = 0; i < words.length; i++) {
+        if (!hashmap[sortedArrayOfWords[i]]) hashmap[sortedArrayOfWords[i]] = [words[i]];
+        else hashmap[sortedArrayOfWords[i]].push(words[i]);
+    }
+
+    for (let key in hashmap) {
+        result.push(hashmap[key]);
+    }
+
+    return result;
 };
 
-console.log(groupAnagrams(["yo", "act", "flop", "tac", "foo", "cat", "oy", "olfp"]));
+console.log(groupAnagrams(["yo", "act", "flop", "tac", "foo", "cat", "oy", "olfp"])); // [["yo", "oy"], ["flop", "olfp"], ["act", "tac", "cat"], ["foo"]]
