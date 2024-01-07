@@ -25,11 +25,28 @@
 // ]
 
 const validIPAddresses = (string) => {
-    
+    // check to see if the string is of length
+    // valid IP addresses
+
+    // iterate for our first section
+        // create our part
+        // test our part and keep going or iterate to next element in string
+        
+        // iterate for our second section
+            // create our part
+            // test our part and keep going or iterate to next element in string
+
+            // iterate for our third & fourth section
+                // create our part
+                // test our part and keep going or iterate to next element in string
+
 };
 
 const isValidPart = (part) => {
-    
+    // if part > 3 || < 1 return false
+    // convert part to num
+    // if part > 255 return false
+    // return length of string === num length
 }
 
 console.log(validIPAddresses("1921680"));
