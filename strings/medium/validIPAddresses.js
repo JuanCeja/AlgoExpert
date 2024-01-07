@@ -25,28 +25,36 @@
 // ]
 
 const validIPAddresses = (string) => {
-    // check to see if the string is of length
-    // valid IP addresses
+    if (string.length < 4) return [];
+    let validIPAddresses = [];
 
-    // iterate for our first section
-        // create our part
-        // test our part and keep going or iterate to next element in string
-        
-        // iterate for our second section
-            // create our part
-            // test our part and keep going or iterate to next element in string
+    for (let i = 1; i < 4; i++) {
+        let part1 = string.substring(0, i);
+        if (!isValidPart(part1)) continue;
 
-            // iterate for our third & fourth section
-                // create our part
-                // test our part and keep going or iterate to next element in string
+        for (let j = i + 1; j < i + 4 && j < string.length; j++) {
+            let part2 = string.substring(i, j);
+            if (!isValidPart(part2)) continue;
+
+            for (let k = j + 1; k < j + 4 && k < string.length; k++) {
+                let part3 = string.substring(j, k);
+                let part4 = string.substring(k, string.length);
+                if (isValidPart(part3) && isValidPart(part4)) {
+                    validIPAddresses.push(`${part1}.${part2}.${part3}.${part4}`)
+                }
+            }
+        }
+    }
+
+    return validIPAddresses;
 
 };
 
 const isValidPart = (part) => {
-    // if part > 3 || < 1 return false
-    // convert part to num
-    // if part > 255 return false
-    // return length of string === num length
+    if (part.length > 3 || part.length < 1) return false
+    let num = +part;
+    if (num > 255) return false;
+    return part.length === num.toString().length;
 }
 
 console.log(validIPAddresses("1921680"));
