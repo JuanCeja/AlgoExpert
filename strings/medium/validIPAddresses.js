@@ -24,9 +24,26 @@
 //     "192.16.8.0",
 // ]
 
-const validIPAddresses = (string) => {
+function restoreIPAddresses(s):
+    result = []  // To store the final list of valid IP addresses
     
-};
+    // Backtracking function to explore all possible combinations of segments
+    function backtrack(startIndex, segments):
+        if segments equals 3:
+            // Check the validity of the remaining segment and add to result if valid
+        else:
+            // Try placing dots at different positions and explore further
+            for i from 1 to 3 and startIndex + i <= s.length:
+                // Extract a segment and proceed with the next level of backtracking
+
+    // Function to check if a segment is a valid number
+    function isValidSegment(segment):
+        // Implement logic to check if the segment is a valid number
+        // (without leading zeros, within the range 0-255)
+        // Return true if valid, false otherwise
+
+    // Start the backtracking process with an e
+
 
 console.log(validIPAddresses("1921680"));
 // [
