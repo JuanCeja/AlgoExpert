@@ -24,7 +24,7 @@ const reverseWordsInString = (string) => {
             count = 0;
         }
         if (count > 0 && i === 0) {
-            let word = string.slice(i, i + count + 1);
+            let word = string.slice(i, i + count);
             wordsArray.push(word);
         }
     }
