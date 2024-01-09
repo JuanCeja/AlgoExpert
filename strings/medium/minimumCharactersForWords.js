@@ -11,15 +11,27 @@
 // ['t', 't', 'h', 'i', 's', 'a', 'd', 'd', 'e', 'e', 'm', '!'];
 
 const minimumCharactersForWords = (words) => {
-    // resultHashmap
-    // iterate our words
-        // currentHashmap
-        // iterate our word
-        // if the letter does not exist in the resultHashmap add it and push it to the array
-        // add it to our currentHashmap
-        // if the letter in current > result
-            // push letter to the array and update result
-    // return result
+    let resultHashmap = {};
+    let result = [];
+    for (let word of words) {
+        let currentHashmap = {};
+        for (let letter of word) {
+            if (!currentHashmap[letter]) {
+                currentHashmap[letter] = 1;
+            } else currentHashmap[letter]++;
+
+            if (!resultHashmap[letter]) {
+                resultHashmap[letter] = 1;
+                result.push(letter);
+            }
+
+            if (currentHashmap[letter] > resultHashmap[letter]) {
+                result.push(letter);
+                resultHashmap[letter] = currentHashmap[letter];
+            }
+        }
+    }
+    return result;
 }
 
 console.log(minimumCharactersForWords(['this', 'that', 'did', 'deed', 'them!', 'a']));
