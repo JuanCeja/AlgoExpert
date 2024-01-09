@@ -12,16 +12,23 @@
 // Sample Output: "best! the is AlgoExpert"
 
 const reverseWordsInString = (string) => {
-    // words array
-    // beginning and end of word variables
-    // counter
-    // iterate string backwards
-        // if its not a "space" add to count
-        // else slice string up to element using counter
-        // push sliced word to words array
-        // push current element
-        // reset counter
-    // join and return words array
+    let wordsArray = [];
+    let count = 0;
+
+    for (let i = string.length - 1; i >= 0; i--) {
+        if (string[i] !== " ") count++;
+        else {
+            let word = string.slice(i + 1, i + count + 1);
+            wordsArray.push(word);
+            wordsArray.push(string[i]);
+            count = 0;
+        }
+        if (count > 0 && i === 0) {
+            let word = string.slice(i, i + count + 1);
+            wordsArray.push(word);
+        }
+    }
+    return wordsArray.join('');
 };
 
 console.log(reverseWordsInString("AlgoExpert is the best!"));
