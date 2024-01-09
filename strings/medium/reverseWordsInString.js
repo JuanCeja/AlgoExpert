@@ -12,7 +12,16 @@
 // Sample Output: "best! the is AlgoExpert"
 
 const reverseWordsInString = (string) => {
-
+    // words array
+    // beginning and end of word variables
+    // counter
+    // iterate string backwards
+        // if its not a "space" add to count
+        // else slice string up to element using counter
+        // push sliced word to words array
+        // push current element
+        // reset counter
+    // join and return words array
 };
 
 console.log(reverseWordsInString("AlgoExpert is the best!"));
