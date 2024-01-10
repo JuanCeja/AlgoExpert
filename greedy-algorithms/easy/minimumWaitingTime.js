@@ -11,7 +11,7 @@
 // Sample Output: 17
 
 const minimumWaitingTime = (queries) => {
-
+    
 };
 
-console.log(mininumWaitingTime([3, 2, 1, 2, 6]))
+console.log(minimumWaitingTime([3, 2, 1, 2, 6]))
