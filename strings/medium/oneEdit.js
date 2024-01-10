@@ -17,28 +17,19 @@
 const oneEdit = (stringOne, stringTwo) => {
     if (Math.abs(stringOne.length - stringTwo.length) > 1) return false;
 
-    let i = 0;
-    let j = 0;
-    let differences = 0;
+    let lengthOne = stringOne.length;
+    let lengthTwo = stringTwo.length;
 
-    if(stringOne.length === stringTwo.length) {
-        while(i < stringOne.length) {
-            if(stringOne[i] !== stringTwo[i]) differences++;
-            i++;
+    for (let i = 0; i < Math.min(lengthOne, lengthTwo); i++) {
+        if (stringOne[i] !== stringTwo[i]) {
+            if (lengthOne > lengthTwo) {
+                return stringOne.slice(i + 1) === stringTwo.slice(i);
+            } else if (lengthTwo > lengthOne) {
+                return stringTwo.slice(i + 1) === stringOne.slice(i);
+            } else return stringOne.slice(i + 1) === stringTwo.slice(i + 1);
         }
-        return differences <= 1;
-    } else {
-        differences = 1;
-        while(i < stringOne.length && j < stringTwo.length) {
-            if(stringOne[i] !== stringTwo[j]) {
-                differences++;
-                if(stringOne.length > stringTwo.length) i++;
-                else j++;
-            }
-            i++;
-        }
-        return differences <= 1;
     }
+    return true;
 }
 
 console.log(oneEdit('hello', 'hollo')); // true
