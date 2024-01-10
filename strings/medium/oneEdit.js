@@ -19,14 +19,27 @@ const oneEdit = (stringOne, stringTwo) => {
 
     let lengthOne = stringOne.length;
     let lengthTwo = stringTwo.length;
+    let indexOne = 0;
+    let indexTwo = 0;
+    let madeChange = false;
 
-    for (let i = 0; i < Math.min(lengthOne, lengthTwo); i++) {
-        if (stringOne[i] !== stringTwo[i]) {
-            if (lengthOne > lengthTwo) {
-                return stringOne.slice(i + 1) === stringTwo.slice(i);
+    while (indexOne < lengthOne && indexTwo < lengthTwo) {
+        if (stringOne[indexOne] !== stringTwo[indexTwo]) {
+            if (madeChange) return false;
+            else if (lengthOne > lengthTwo) {
+                indexOne++;
+                madeChange = true;
             } else if (lengthTwo > lengthOne) {
-                return stringTwo.slice(i + 1) === stringOne.slice(i);
-            } else return stringOne.slice(i + 1) === stringTwo.slice(i + 1);
+                indexTwo++;
+                madeChange = true;
+            } else {
+                indexOne++;
+                indexTwo++;
+                madeChange = true;
+            }
+        } else {
+            indexOne++;
+            indexTwo++;
         }
     }
     return true;
