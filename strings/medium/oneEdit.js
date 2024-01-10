@@ -15,16 +15,30 @@
 // Sample Output: True -- A single replace at index 1 of either string can make the strings equal
 
 const oneEdit = (stringOne, stringTwo) => {
-    if (Math.abs(stringOne.length - stringTwo.length) >= 2) return false;
+    if (Math.abs(stringOne.length - stringTwo.length) > 1) return false;
 
-    let differences = 0;
     let i = 0;
-    if (stringOne.length !== stringTwo.length) differences++;
-    while (i < stringOne.length && i < stringTwo.length) {
-        if (stringOne[i] !== stringTwo[i]) differences++;
-        i++;
-    };
-    return differences <= 1 ? true : false;
+    let j = 0;
+    let differences = 0;
+
+    if(stringOne.length === stringTwo.length) {
+        while(i < stringOne.length) {
+            if(stringOne[i] !== stringTwo[i]) differences++;
+            i++;
+        }
+        return differences <= 1;
+    } else {
+        differences = 1;
+        while(i < stringOne.length && j < stringTwo.length) {
+            if(stringOne[i] !== stringTwo[j]) {
+                differences++;
+                if(stringOne.length > stringTwo.length) i++;
+                else j++;
+            }
+            i++;
+        }
+        return differences <= 1;
+    }
 }
 
 console.log(oneEdit('hello', 'hollo')); // true
