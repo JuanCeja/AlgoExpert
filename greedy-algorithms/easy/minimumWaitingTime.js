@@ -11,7 +11,15 @@
 // Sample Output: 17
 
 const minimumWaitingTime = (queries) => {
-    
+    // sort the array
+    // array of times
+    // total time = 0
+    // iterate sorted array starting at 1
+        // total time = total time + current index
+        // push total time
+    // iterate array of times
+        // add all values
+    // return total time
 };
 
-console.log(minimumWaitingTime([3, 2, 1, 2, 6]))
+console.log(minimumWaitingTime([3, 2, 1, 2, 6])); // 17
