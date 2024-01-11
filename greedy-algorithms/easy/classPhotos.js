@@ -21,11 +21,25 @@
 // true - Place all students with blue shirts in the back row. 
 
 const classPhotos = (redShirtHeights, blueShirtHeights) => {
-    // sort both arrays
-    // counter
-    // iterate both arrays
-        // if blue > counter++ if red > counter--
-    // return if length === size
+    if(redShirtHeights.length === 1 && blueShirtHeights === 1) return true;
+
+    redShirtHeights.sort((a, b) => a - b);
+    blueShirtHeights.sort((a, b) => a - b);
+    
+    let counter = 0;
+    let i = 0;
+    while (i < redShirtHeights.length) {
+        if (blueShirtHeights[i] > redShirtHeights[i]) {
+            counter++;
+            i++;
+        } else if (blueShirtHeights[i] < redShirtHeights[i]) {
+            counter--;
+            i++;
+        } else {
+            i++;
+        }
+    }
+    return Math.abs(counter) === redShirtHeights.length;
 }
 
 console.log(classPhotos([5, 8, 1, 3, 4], [6, 9, 2, 4, 5])) // true
