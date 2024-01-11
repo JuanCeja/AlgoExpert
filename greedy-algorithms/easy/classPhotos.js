@@ -14,11 +14,18 @@
 // redShirtHeights = [5, 8, 1, 3, 4]
 // blueShirtHeights = [6, 9, 2, 4, 5]
 
+// 1 3 4 5 8
+// 2 4 5 6 9
+
 // Sample Output:
 // true - Place all students with blue shirts in the back row. 
 
 const classPhotos = (redShirtHeights, blueShirtHeights) => {
-
+    // sort both arrays
+    // counter
+    // iterate both arrays
+        // if blue > counter++ if red > counter--
+    // return if length === size
 }
 
 console.log(classPhotos([5, 8, 1, 3, 4], [6, 9, 2, 4, 5])) // true
