@@ -10,70 +10,14 @@
 
 // Sample Output: 17
 
-const mergeSort = (array) => {
-    if (array.length <= 1) return array;
-
-    let mid = Math.floor(array.length / 2);
-    let left = mergeSort(array.slice(0, mid));
-    let right = mergeSort(array.slice(mid));
-
-    return merge(left, right);
-}
-
-const merge = (arr1, arr2) => {
-    let mergedArray = [];
-    let i = 0;
-    let j = 0;
-
-    while (i < arr1.length && j < arr2.length) {
-        if (arr1[i] < arr2[j]) {
-            mergedArray.push(arr1[i]);
-            i++;
-        } else {
-            mergedArray.push(arr2[j]);
-            j++;
-        }
-    }
-
-    while (i < arr1.length) {
-        mergedArray.push(arr1[i]);
-        i++;
-    }
-
-    while (j < arr2.length) {
-        mergedArray.push(arr2[j]);
-        j++
-    }
-
-    return mergedArray;
-}
-
 const minimumWaitingTime = (queries) => {
-    // sort the array
-    // array of times
-    // total time = 0
-    let sortedQueries = mergeSort(queries);
-    let queryTimes = [];
-    let totalTime = sortedQueries[0];
+    queries.sort((a, b) => a - b);
+    let totalTime = 0;
 
-    // iterate sorted array starting at 1
-    for (let i = 1; i < sortedQueries.length; i++) {
-        // total time = total time + current index
-        // push total time
-        totalTime = totalTime + sortedQueries[i];
-        queryTimes.push(totalTime);
-    };
-
-    console.log(sortedQueries)
-    console.log(queryTimes)
-    totalTime = 0;
-
-    // iterate array of times
-    // add all values
-    for(let time of queryTimes) {
-        totalTime = totalTime + time;
+    for (let i = 0; i < queries.length; i++) {
+        let queriesLeft = queries.length - i - 1;
+        totalTime += queries[i] * queriesLeft;
     }
-    // return total time
     return totalTime;
 };
 
