@@ -15,25 +15,15 @@
 // Sample Output: 32
 
 const tandemBicycle = (redShirtSpeeds, blueShirtSpeeds, fastest) => {
-    // result
     let result = 0;
-    let sortedBlueShirtSpeeds;
-    let sortedRedShirtSpeeds;
-    if (fastest) {
-        sortedRedShirtSpeeds = [...redShirtSpeeds].sort((a, b) => a - b);
-        sortedBlueShirtSpeeds = [...blueShirtSpeeds].sort((a, b) => b - a);
-    } else {
-        sortedRedShirtSpeeds = [...redShirtSpeeds].sort((a, b) => b - a);
-        sortedBlueShirtSpeeds = [...blueShirtSpeeds].sort((a, b) => a - b);
-    }
-    console.log(redShirtSpeeds, sortedRedShirtSpeeds)
-    console.log(blueShirtSpeeds, sortedBlueShirtSpeeds)
+    redShirtSpeeds.sort((a, b) => b - a);
+    blueShirtSpeeds.sort((a, b) => fastest ? a - b : b - a);
+
     for (let i = 0; i < redShirtSpeeds.length; i++) {
-        if (fastest) result += Math.max(sortedRedShirtSpeeds[i], sortedBlueShirtSpeeds[i]);
-        else result += Math.min(sortedRedShirtSpeeds[i], sortedBlueShirtSpeeds[i])
+        result += Math.max(redShirtSpeeds[i], blueShirtSpeeds[i]);
     }
+
     return result;
 };
 
 console.log(tandemBicycle([5, 5, 3, 9, 2], [3, 6, 7, 2, 1], true)); // 32
-console.log(tandemBicycle([5, 4, 3, 2, 1], [1, 2, 3, 4, 5], false)); // 15
