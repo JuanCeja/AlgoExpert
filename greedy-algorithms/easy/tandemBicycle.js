@@ -2,7 +2,7 @@
 
 // You're given two lists of positive integers: one that contains the speeds of riders wearing red shirts and one that contains the speeds of riders wearing blue shirts. Each rider is represented by a single positive integer, which is the speed that they pedal a tandem bicycle at. Both lists have the same length, meaning that there are as many red-shirt riders as there are blue-shirt riders. Your goal is to pair every rider wearing a red shirt with a rider wearing a blue shirt to operate a tandem bicycle.
 
-// "Write a function that returns the maximum possible total speed or the minimum possible total speed of all of the tandem bicycles being ridden based on an input parameter, fastest. If fastest = true, your function should return the maximum possible total speed; otherwise it should return the minimum total speed.
+// Write a function that returns the maximum possible total speed or the minimum possible total speed of all of the tandem bicycles being ridden based on an input parameter, fastest. If fastest = true, your function should return the maximum possible total speed; otherwise it should return the minimum total speed.
 
 // "Total speed" is defined as the sum of the speeds of all the tandem bicycles being ridden. For example, if there are 4 riders (2 red-shirt riders and 2 blue-shirt riders) who have speeds of 1, 3, 4, 5, and if they're paired on tandem bicycles as follows: [1, 4], [5, 3], then the total speed of these tandem bicycles is 4 + 5 = 9.
 
@@ -16,13 +16,24 @@
 
 const tandemBicycle = (redShirtSpeeds, blueShirtSpeeds, fastest) => {
     // result
-    // if fastest === true
-        // sort redshirt smallest to biggest and blue shirt biggest to smallest
-    // else sort both of them the same way
-    // iterate both arrays
-        // if fastest === true choose biggest and add to result
-        // else choose min
-    // return result
+    let result = 0;
+    let sortedBlueShirtSpeeds;
+    let sortedRedShirtSpeeds;
+    if (fastest) {
+        sortedRedShirtSpeeds = [...redShirtSpeeds].sort((a, b) => a - b);
+        sortedBlueShirtSpeeds = [...blueShirtSpeeds].sort((a, b) => b - a);
+    } else {
+        sortedRedShirtSpeeds = [...redShirtSpeeds].sort((a, b) => b - a);
+        sortedBlueShirtSpeeds = [...blueShirtSpeeds].sort((a, b) => a - b);
+    }
+    console.log(redShirtSpeeds, sortedRedShirtSpeeds)
+    console.log(blueShirtSpeeds, sortedBlueShirtSpeeds)
+    for (let i = 0; i < redShirtSpeeds.length; i++) {
+        if (fastest) result += Math.max(sortedRedShirtSpeeds[i], sortedBlueShirtSpeeds[i]);
+        else result += Math.min(sortedRedShirtSpeeds[i], sortedBlueShirtSpeeds[i])
+    }
+    return result;
 };
 
 console.log(tandemBicycle([5, 5, 3, 9, 2], [3, 6, 7, 2, 1], true)); // 32
+console.log(tandemBicycle([5, 4, 3, 2, 1], [1, 2, 3, 4, 5], false)); // 15
