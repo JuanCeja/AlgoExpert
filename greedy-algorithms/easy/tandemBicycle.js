@@ -15,7 +15,14 @@
 // Sample Output: 32
 
 const tandemBicycle = (redShirtSpeeds, blueShirtSpeeds, fastest) => {
-
+    // result
+    // if fastest === true
+        // sort redshirt smallest to biggest and blue shirt biggest to smallest
+    // else sort both of them the same way
+    // iterate both arrays
+        // if fastest === true choose biggest and add to result
+        // else choose min
+    // return result
 };
 
 console.log(tandemBicycle([5, 5, 3, 9, 2], [3, 6, 7, 2, 1], true)); // 32
