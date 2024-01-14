@@ -13,24 +13,24 @@
 // Sample Output: 3 - Job 0 would be completed first, followed by job 2. Job 1 is not completed.
 
 const optimalFreelancing = (jobs) => {
-    jobs.sort((a, b) => a.payment - b.payment);
+    jobs.sort((a, b) => b.payment - a.payment);
+    let timeline = new Array(7).fill(false);
+    let maxDays = 7;
     let profit = 0;
-    let schedule = new Array(7);
-    for (let i = jobs.length - 1; i >= 0; i--) {
-        if (!schedule[jobs[i].deadline]) {
-            schedule[jobs[i].deadline] = jobs[i].payment;
-            profit += jobs[i].payment;
-        } else {
-            for (let j = i - 1; j >= 0; j--) {
-                if (!schedule[jobs[j].deadline]) {
-                    schedule[jobs[j].deadline] = jobs[j].payment;
-                    profit += jobs[j].payment;
-                }
+
+    for (const job of jobs) {
+        const deadline = job.deadline;
+        for (let time = deadline - 1; time >= 0; time--) {
+            if(timeline[time] === false) {
+                timeline[time] = true;
+                profit += job.payment;
+                break;
             }
         }
     }
     return profit;
 }
+
 
 console.log(optimalFreelancing([
     { "deadline": 1, "payment": 1 },
