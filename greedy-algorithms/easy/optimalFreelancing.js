@@ -13,17 +13,23 @@
 // Sample Output: 3 - Job 0 would be completed first, followed by job 2. Job 1 is not completed.
 
 const optimalFreelancing = (jobs) => {
-    // sort the array by payment
     jobs.sort((a, b) => a.payment - b.payment);
-
-    // create an array of length 7
-    // iterate our array backwards to get highest profit
-        // check to see if index at the deadline is available
-            // if so add payment there and to our profit var too
-        // else if spot is taken 
-            // iterate left so find an open slot
-                // add payment to array and our var too
-
+    let profit = 0;
+    let schedule = new Array(7);
+    for (let i = jobs.length - 1; i >= 0; i--) {
+        if (!schedule[jobs[i].deadline]) {
+            schedule[jobs[i].deadline] = jobs[i].payment;
+            profit += jobs[i].payment;
+        } else {
+            for (let j = i - 1; j >= 0; j--) {
+                if (!schedule[jobs[j].deadline]) {
+                    schedule[jobs[j].deadline] = jobs[j].payment;
+                    profit += jobs[j].payment;
+                }
+            }
+        }
+    }
+    return profit;
 }
 
 console.log(optimalFreelancing([
