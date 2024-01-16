@@ -16,7 +16,14 @@
 // Note: there are multiple correct answers 
 
 function taskAssignment(k, tasks) {
-    
+    // optimalTasks
+    // sort the array
+    // 
+    // start, end pointers
+    // while loop
+        // push start and end as a pair to optimalTasks
+        // move up start and end down
+    // return optimalTasks
 };
 
 console.log(taskAssignment(3, [1, 3, 5, 3, 1, 4])); 
