@@ -15,7 +15,6 @@
 const optimalFreelancing = (jobs) => {
     jobs.sort((a, b) => b.payment - a.payment);
     let timeline = new Array(7).fill(false);
-    let maxDays = 7;
     let profit = 0;
 
     for (const job of jobs) {
