@@ -16,14 +16,19 @@
 // Note: there are multiple correct answers 
 
 function taskAssignment(k, tasks) {
-    // optimalTasks
-    // sort the array
-    // 
-    // start, end pointers
-    // while loop
-        // push start and end as a pair to optimalTasks
-        // move up start and end down
-    // return optimalTasks
+    const formattedTasks = tasks.map((value, index) => ({ value, index }));
+    formattedTasks.sort((a, b) => a.value - b.value);
+
+    let optimalTasks = [];
+    let start = 0;
+    let end = tasks.length - 1;
+
+    while (start < end) {
+        optimalTasks.push([formattedTasks[start].index, formattedTasks[end].index]);
+        start++;
+        end--;
+    }
+    return optimalTasks;
 };
 
 console.log(taskAssignment(3, [1, 3, 5, 3, 1, 4])); 
