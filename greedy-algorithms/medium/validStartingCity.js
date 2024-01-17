@@ -14,13 +14,21 @@
 // Sample Output: 4
 
 function validStartingCity(distances, fuel, mpg) {
-    // miles, gallons of fuel, current valid starting city = 0
-    // use a while loop
-        // substract the distance to miles
-        // if miles <= 0 
-            // current valid starting city = i
-        // miles += fuel[i] * mpg
-    // return valid starting city
+    let gallonsOfFuel = 0;
+    let miles = 0;
+    let validStartingCity = 0;
+
+    for (let i = 0; i < distances.length; i++) {
+        gallonsOfFuel += fuel[i];
+        miles += mpg * gallonsOfFuel;
+        miles -= distances[i];
+        gallonsOfFuel = gallonsOfFuel - (miles / mpg);
+        if (miles <= 0) {
+            validStartingCity = i;
+            gallonsOfFuel = 0;
+        }
+    }
+    return validStartingCity;
 };
 
 console.log(validStartingCity([5, 25, 15, 10, 15], [1, 2, 1, 0, 3], 10)); // 4
