@@ -11,7 +11,15 @@
 // Sample Output: 12 -- calculated as: 5 + 2 + 2 * (7 - 1) + 3 + 2 * (6 + 3 * (-13 + 8) + 4)
 
 const productSum = (array, depth = 1) => {
-
+    let sum = 0;
+    for (let item of array) {
+        if (Array.isArray(item)) {
+            sum += productSum(item, depth + 1);
+        } else {
+            sum += item;
+        }
+    }
+    return depth * sum;
 };
 
 console.log(productSum([5, 2, [7, -1], 3, [6, [-13, 8], 4]])); // 12
