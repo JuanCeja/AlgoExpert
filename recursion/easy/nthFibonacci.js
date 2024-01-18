@@ -9,8 +9,10 @@
 // Sample Output #2: 5 // 0, 1, 1, 2, 3, 5
 
 const getNthFib = (n) => {
-    // create our base case
-    // return our function calls with n - 2 + n - 1
+    if (n === 1) return 0;
+    if (n === 2) return 1;
+
+    return getNthFib(n - 2) + getNthFib(n - 1);
 };
 
 console.log(getNthFib(5)); // 3
