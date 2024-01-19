@@ -8,15 +8,13 @@
 // Sample Output: [[], [1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3]]
 
 const powerset = (array) => {
-    const subsets = [[]];
-    for (const ele of array) {
-        const length = subsets.length;
-        for (let i = 0; i < length; i++) {
-            const currentSubset = subsets[i];
-            subsets.push(currentSubset.concat(ele));
-        }
-    }
-    return subsets;
+    //  output
+    // iterate the array
+        // output length
+        // iterate output array
+            // currentSubset
+            // output push currentSubset + element
+    // return output
 };
 
 console.log(powerset([1, 2, 3]));
