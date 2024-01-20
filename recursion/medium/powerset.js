@@ -8,7 +8,13 @@
 // Sample Output: [[], [1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3]]
 
 const powerset = (array) => {
-    
+    // output = [[]]
+    // iterate array
+        // length of output
+        // iterate output
+            // currentSet = current array element
+            // push to every set in output a new set with its new set
+    // return output
 };
 
 console.log(powerset([1, 2, 3]));
