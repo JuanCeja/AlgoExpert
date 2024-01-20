@@ -7,17 +7,20 @@
 // Sample Input: array = [1, 2, 3]
 // Sample Output: [[], [1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3]]
 
-const powerset = (array) => {
-    let output = [[]];
-    for (let num of array) {
-        let length = output.length;
-        for (let i = 0; i < length; i++) {
-            let currentSet = num;
-            output.push(output[i].concat(currentSet));
-        }
+const powerset = (array, idx = null) => {
+    if (idx === null) idx = array.length - 1;
+    if (idx < 0) return [[]];
+
+    const ele = array[idx];
+    const subsets = powerset(array, idx - 1);
+
+    const length = subsets.length;
+    for (let i = 0; i < length; i++) {
+        const currentSubset = subsets[i];
+        subsets.push(currentSubset.concat(ele));
     }
-    return output;
+    return subsets;
 };
 
-console.log(powerset([1, 2, 3, 4]));
+console.log(powerset([1, 2, 3]));
 // [[], [1], [2], [3], [1, 2], [1, 3], [2, 3], [1, 2, 3]]
