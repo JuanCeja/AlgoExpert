@@ -11,7 +11,18 @@
 // true
 
 function hasSingleCycle(array) {
-    
+    // tracking array
+    // pointer = 0
+    // loop input array
+        // add current element to pointer
+            // if pointer is > array.length and redeclare pointer
+                // start from beginning
+            // if pointer is < 0
+                // start from the end and redeclare pointer
+        // set pointer location to true
+    // iterate the tracking array
+        // if you find a false value return false
+    // return true
 };
 
 console.log(hasSingleCycle([2, 3, 1, -4, -4, 2])); // true
