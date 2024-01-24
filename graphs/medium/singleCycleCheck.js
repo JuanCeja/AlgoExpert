@@ -10,8 +10,19 @@
 // Sample Output:
 // true
 
+function nextPosition(p, array) {
+    const nextPos = (p + array[p]) % array.length;
+    return nextPos >= 0 ? nextPos : array.length + nextPos;
+}
+
 function hasSingleCycle(array) {
-    
+    let p = 0;
+    while (array[p] !== null) {
+        const index = p;
+        p = nextPosition(index, array);
+        array[index] = null;
+    }
+    return p === 0 && !array.some(n => n !== null);
 };
 
 console.log(hasSingleCycle([2, 3, 1, -4, -4, 2])); // true
