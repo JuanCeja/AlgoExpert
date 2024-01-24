@@ -6,7 +6,7 @@
 
 // Sample Input:
 
-//               A
+//                A
 //             /  |  \
 //           B     C   D
 //          / \        / \
