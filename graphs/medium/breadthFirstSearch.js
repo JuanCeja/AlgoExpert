@@ -29,16 +29,22 @@ class Node {
         return this;
     }
 
-    breadthFirstSearch(array) {
-        let queue = [this];
-        while (queue.length) {
-            const current = queue.shift();
-            array.push(current.name);
-            for (const child of current.children) {
-                queue.push(child);
-            }
-        }
-        return array;
+    breadthFirstSearch(array = []) {
+        // create a queue to add children nodes. starting with this.node
+        // while queue is not empty
+            // current = queue.shift
+            // store current name onto array
+            // iterate currents children
+                // add them to queue
+        // return array
     }
 }
 
+let newd = new Node("a");
+newd.addChild('b');
+newd.addChild('bd');
+newd.addChild('gdsb');
+newd.addChild('bda');
+newd.addChild('bda');
+
+console.log(newd.breadthFirstSearch());
