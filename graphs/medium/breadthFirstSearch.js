@@ -41,12 +41,3 @@ class Node {
         return array;
     }
 }
-
-let newd = new Node("a");
-newd.addChild('b');
-newd.addChild('bd');
-newd.addChild('gdsb');
-newd.addChild('bda');
-newd.addChild('bda');
-
-console.log(newd.breadthFirstSearch());
