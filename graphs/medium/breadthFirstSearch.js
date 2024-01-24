@@ -30,7 +30,15 @@ class Node {
     }
 
     breadthFirstSearch(array) {
-        // Write your code here.
+        let queue = [this];
+        while (queue.length) {
+            const current = queue.shift();
+            array.push(current.name);
+            for (const child of current.children) {
+                queue.push(child);
+            }
+        }
+        return array;
     }
 }
 
