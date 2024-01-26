@@ -15,11 +15,44 @@
 
 // Sample Output: [1, 2, 2, 2, 5]
 
-const riverSize = (array) => {
-    
-};
+function riverSizes(matrix) {
+    const sizes = [];
 
-console.log(riverSize(
+    // Helper function for DFS
+    function exploreRiver(row, col, size) {
+        if (
+            row < 0 || row >= matrix.length ||
+            col < 0 || col >= matrix[0].length ||
+            matrix[row][col] === 0
+        ) {
+            return;
+        }
+
+        matrix[row][col] = 0; // Mark the cell as visited
+
+        // Explore horizontally and vertically
+        size++;
+        size = exploreRiver(row - 1, col, size); // Up
+        size = exploreRiver(row + 1, col, size); // Down
+        size = exploreRiver(row, col - 1, size); // Left
+        size = exploreRiver(row, col + 1, size); // Right
+
+        return size;
+    }
+
+    // Traverse the matrix
+    for (let row = 0; row < matrix.length; row++) {
+        for (let col = 0; col < matrix[0].length; col++) {
+            if (matrix[row][col] === 1) {
+                sizes.push(exploreRiver(row, col, 0));
+            }
+        }
+    }
+
+    return sizes;
+}
+
+console.log(riverSizes(
     [
         [1, 0, 0, 1, 0],
         [1, 0, 1, 0, 0],
