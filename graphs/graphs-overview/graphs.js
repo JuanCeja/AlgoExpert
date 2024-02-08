@@ -20,7 +20,8 @@ class Graph {
     };
 
     removeVertex(vertex) {
-
+        this.adjacencyList[vertex].forEach(v => this.removeEdge(v, vertex));
+        delete this.adjacencyList[vertex];
     }
 };
 
@@ -29,7 +30,13 @@ g.addVertex('Tokyo');
 g.addVertex('San Francisco');
 g.addVertex('Lehi');
 g.addEdge('San Francisco', 'Tokyo');
+g.addEdge('San Francisco', 'San Diego');
+g.addEdge('Tokyo', 'San Diego');
+g.addEdge('Yosemite', 'San Diego');
 g.addEdge('New York', 'Seattle');
 g.removeEdge('New York', 'Seattle');
 g.addEdge('New York', 'Miami');
+g.removeVertex('San Diego');
+g.removeVertex('Lehi');
+g.removeVertex('Seattle');
 console.log(g);
