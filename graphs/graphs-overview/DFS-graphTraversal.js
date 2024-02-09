@@ -24,7 +24,7 @@ class Graph {
         delete this.adjacencyList[vertex];
     }
 
-    dfsRecursive() {
+    dfsRecursive(vertex) {
         // if vertex is empty
             // return- this is the base case
         // add vertex to results list
@@ -36,17 +36,17 @@ class Graph {
 };
 
 let g = new Graph();
-g.addVertex('Tokyo');
-g.addVertex('San Francisco');
-g.addVertex('Lehi');
-g.addEdge('San Francisco', 'Tokyo');
-g.addEdge('San Francisco', 'San Diego');
-g.addEdge('Tokyo', 'San Diego');
-g.addEdge('Yosemite', 'San Diego');
-g.addEdge('New York', 'Seattle');
-g.removeEdge('New York', 'Seattle');
-g.addEdge('New York', 'Miami');
-g.removeVertex('San Diego');
-g.removeVertex('Lehi');
-g.removeVertex('Seattle');
+g.addVertex('A');
+g.addVertex('B');
+g.addVertex('C');
+g.addVertex('D');
+g.addVertex('E');
+g.addVertex('F');
+g.addEdge('A', 'B');
+g.addEdge('A', 'C');
+g.addEdge('B', 'D');
+g.addEdge('C', 'E');
+g.addEdge('D', 'E');
+g.addEdge('D', 'F');
+g.addEdge('E', 'F');
 console.log(g);
