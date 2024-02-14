@@ -1,4 +1,10 @@
+class Graph {
+    constructor() {
+        this.adjacencyList = {};
+    }
 
+    
+}
 
 let g = new Graph();
 g.addVertex('A');
