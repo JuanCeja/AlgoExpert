@@ -20,7 +20,8 @@ class Graph {
     }
 
     removeVertex(vertex) {
-        
+        this.adjacencyList[vertex].forEach(v => this.removeEdge(v, vertex));
+        delete this.adjacencyList[vertex];
     }
 }
 
