@@ -13,6 +13,10 @@ class Graph {
         this.adjacencyList[v1].push(v2);
         this.adjacencyList[v2].push(v1);
     }
+
+    removeEdge(v1, v2) {
+        
+    }
 }
 
 let g = new Graph();
