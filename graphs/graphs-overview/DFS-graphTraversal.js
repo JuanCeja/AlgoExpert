@@ -41,18 +41,20 @@ class Graph {
         return result;
     }
 
-    depthFirstIterative (vertex) {
-        // create a stack to help us keep track of vertices
-        // create a list to store the end result to be returned at the end
-        // create an object to store visited vertices
-        // add the starting vertex to the stack and mark it visited
-        // while the stack has something in it
-            // pop the next vertex from the stack
-            // if that vertex hasn't been visited yet
-                // mark it as visited
-                // add it to the results list
-                // push all of its neighbors into the stack
-        // return the result
+    depthFirstIterative(start) {
+        let stack = [];
+        let result = [];
+        let visited = {};
+        stack.push(start);
+        while (stack.length) {
+            let vertex = stack.pop();
+            if (!visited[vertex]) {
+                visited[vertex] = true;
+                result.push(vertex);
+                this.adjacencyList[vertex].forEach(neighbor => stack.push(neighbor));
+            }
+        }
+        return result;
     }
 }
 
