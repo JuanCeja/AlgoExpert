@@ -40,6 +40,10 @@ class Graph {
         })(startingVertex)
         return result;
     }
+
+    depthFirstIterative (vertex) {
+        
+    }
 }
 
 let g = new Graph();
