@@ -42,17 +42,21 @@ class Graph {
     }
 
     depthFirstIterative(start) {
-        let stack = [];
+        let stack = [start];
         let result = [];
         let visited = {};
-        stack.push(start);
+
+        visited[start] = true;
         while (stack.length) {
-            let vertex = stack.pop();
-            if (!visited[vertex]) {
-                visited[vertex] = true;
-                result.push(vertex);
-                this.adjacencyList[vertex].forEach(neighbor => stack.push(neighbor));
-            }
+            let currentVertex = stack.pop();
+            result.push(currentVertex)
+            if (!this.adjacencyList[currentVertex]) continue;
+            this.adjacencyList[currentVertex].forEach(neighbor => {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    stack.push(neighbor);
+                }
+            });
         }
         return result;
     }
@@ -72,16 +76,4 @@ g.addEdge('C', 'E');
 g.addEdge('D', 'E');
 g.addEdge('D', 'F');
 g.addEdge('E', 'F');
-console.log(g.depthFirstRecursive('A'));
-
-
-
-//     dfsRecursive(vertex) {
-//         // create a list to store the end result, to be returned at the very end
-//         // create an object to store visited vertices
-//         // create a helper function which accepts the vertex
-//             // the helper function should return early if the vertex is empty
-//             // the helper function should place the vertex it accepts into the visited object and push that vertex into the result array
-//             // loop over all of the values in the adjacencyList for that vertex
-//             // if any of those values have not been visited, recursively invoke the helper function with that vertex
-//     }
+console.log(g.depthFirstIterative('A'));
