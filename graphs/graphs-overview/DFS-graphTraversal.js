@@ -23,6 +23,43 @@ class Graph {
         this.adjacencyList[vertex].forEach(v => this.removeEdge(v, vertex));
         delete this.adjacencyList[vertex];
     }
+
+    depthFirstRecursive(startingVertex) {
+        const result = [];
+        const visited = {};
+        const adjacencyList = this.adjacencyList;
+
+        if (!this.adjacencyList[startingVertex]) return result;
+
+        (function dfs(vertex) {
+            visited[vertex] = true;
+            result.push(vertex);
+            adjacencyList[vertex].forEach(neighbor => {
+                if (!visited[neighbor]) return dfs(neighbor);
+            })
+        })(startingVertex)
+        return result;
+    }
+
+    depthFirstIterative(start) {
+        let stack = [start];
+        let result = [];
+        let visited = {};
+
+        visited[start] = true;
+        while (stack.length) {
+            let currentVertex = stack.pop();
+            result.push(currentVertex)
+            if (!this.adjacencyList[currentVertex]) continue;
+            this.adjacencyList[currentVertex].forEach(neighbor => {
+                if (!visited[neighbor]) {
+                    visited[neighbor] = true;
+                    stack.push(neighbor);
+                }
+            });
+        }
+        return result;
+    }
 }
 
 let g = new Graph();
@@ -39,16 +76,4 @@ g.addEdge('C', 'E');
 g.addEdge('D', 'E');
 g.addEdge('D', 'F');
 g.addEdge('E', 'F');
-console.log(g);
-
-
-
-//     dfsRecursive(vertex) {
-//         // create a list to store the end result, to be returned at the very end
-//         // create an object to store visited vertices
-//         // create a helper function which accepts the vertex
-//             // the helper function should return early if the vertex is empty
-//             // the helper function should place the vertex it accepts into the visited object and push that vertex into the result array
-//             // loop over all of the values in the adjacencyList for that vertex
-//             // if any of those values have not been visited, recursively invoke the helper function with that vertex
-//     }
+console.log(g.depthFirstIterative('A'));
