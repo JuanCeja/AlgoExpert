@@ -24,15 +24,21 @@ class Graph {
         delete this.adjacencyList[vertex];
     }
 
-    //     dfsRecursive(vertex) {
-//         // create a list to store the end result, to be returned at the very end
-//         // create an object to store visited vertices
-//         // create a helper function which accepts the vertex
-//             // the helper function should return early if the vertex is empty
-//             // the helper function should place the vertex it accepts into the visited object and push that vertex into the result array
-//             // loop over all of the values in the adjacencyList for that vertex
-//             // if any of those values have not been visited, recursively invoke the helper function with that vertex
-//     }
+    dfsRecursive(startingVertex) {
+        const resultsArray = [];
+        const visitedVertices = {};
+
+        function DFS(vertex) {
+            if (this.adjacencyList[vertex].length === 0) return resultsArray;
+            visitedVertices[vertex] = true;
+            resultsArray.push(vertex);
+            for (let v of vertex) {
+                if (!visitedVertices[v]) DFS(v);
+            }
+        }
+        DFS(startingVertex);
+        return resultsArray;
+    }
 
 }
 
@@ -51,6 +57,7 @@ g.addEdge('D', 'E');
 g.addEdge('D', 'F');
 g.addEdge('E', 'F');
 console.log(g);
+console.log(g.dfsRecursive('A'));
 
 
 
