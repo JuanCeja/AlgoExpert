@@ -25,19 +25,19 @@ class Graph {
     }
 
     depthFirstRecursive(startingVertex) {
-        // create our results array
-        // create our object for visited vertices
-        // our adjacencyList - since this doesn't work inside our helper function
-        // our dfs helper function
-            // if our vertex does not exist return null
-        // add our vertex to our visited object
-        // push our vertex to our results array
-        // iterate the neighbors of our current vertex
-            // if it hasnt been visited call our recursive dfs function
-        // call our function
-        // return results
+        const result = [];
+        const visited = {};
+        const adjacencyList = this.adjacencyList;
+        (function dfs(vertex) {
+            if (!vertex) return null;
+            visited[vertex] = true;
+            result.push(vertex);
+            adjacencyList[vertex].forEach(neighbor => {
+                if (!visited[neighbor]) return dfs(neighbor);
+            })
+        })(startingVertex)
+        return result;
     }
-
 }
 
 let g = new Graph();
