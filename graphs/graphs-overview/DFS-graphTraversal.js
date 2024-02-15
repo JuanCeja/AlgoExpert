@@ -28,8 +28,10 @@ class Graph {
         const result = [];
         const visited = {};
         const adjacencyList = this.adjacencyList;
+
+        if (!this.adjacencyList[startingVertex]) return result;
+
         (function dfs(vertex) {
-            if (!vertex) return null;
             visited[vertex] = true;
             result.push(vertex);
             adjacencyList[vertex].forEach(neighbor => {
