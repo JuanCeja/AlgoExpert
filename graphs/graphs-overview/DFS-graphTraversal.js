@@ -40,7 +40,16 @@ class Graph {
     }
 
     depthFirstIterative(start) {
-        
+        // create a stack with starting value
+        // create visited map
+        // let result
+        // while the stack is not empty
+            // let currentVertex = popped from stack
+            // push currentVertex to result
+            // mark currentVertex as visited
+            // iterate through currentVertex's neighbors
+                // if they aren't visited push them to the stack
+        // return result
     }
 }
 
