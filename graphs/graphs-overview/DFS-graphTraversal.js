@@ -25,20 +25,7 @@ class Graph {
     }
 
     depthFirstRecursive(startingVertex) {
-        const result = [];
-        const visited = {};
-        const adjacencyList = this.adjacencyList;
-
-        if (!this.adjacencyList[startingVertex]) return result;
-
-        (function dfs(vertex) {
-            visited[vertex] = true;
-            result.push(vertex);
-            adjacencyList[vertex].forEach(neighbor => {
-                if (!visited[neighbor]) return dfs(neighbor);
-            })
-        })(startingVertex)
-        return result;
+        
     }
 
     depthFirstIterative(start) {
