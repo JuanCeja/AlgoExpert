@@ -40,16 +40,21 @@ class Graph {
     }
 
     depthFirstIterative(start) {
-        // create a stack with starting value
-        // create visited map
-        // let result
-        // while the stack is not empty
-            // let currentVertex = popped from stack
-            // push currentVertex to result
-            // mark currentVertex as visited
-            // iterate through currentVertex's neighbors
-                // if they aren't visited push them to the stack
-        // return result
+        let stack = [start];
+        let result = [];
+        let visited = {};
+
+        while (stack.length) {
+            let currentVertex = stack.pop();
+            if (!visited[currentVertex]) {
+                result.push(currentVertex);
+                visited[currentVertex] = true;
+                this.adjacencyList[currentVertex].forEach(neighbor => {
+                    if (!visited[neighbor]) stack.push(neighbor);
+                })
+            }
+        }
+        return result;
     }
 }
 
@@ -67,5 +72,5 @@ g.addEdge('C', 'E');
 g.addEdge('D', 'E');
 g.addEdge('D', 'F');
 g.addEdge('E', 'F');
-// console.log(g.depthFirstIterative('A'));
+console.log(g.depthFirstIterative('A'));
 console.log(g.depthFirstRecursive('A'));
