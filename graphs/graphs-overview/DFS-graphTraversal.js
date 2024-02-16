@@ -25,13 +25,18 @@ class Graph {
     }
 
     depthFirstRecursive(startingVertex) {
-        // result, visited, adjacencyList
-        // our DFS helper function / call startingVertex on it
-            // push the vertex to result
-            // mark it as visited
-            // iterate through the neighbors of our current vertex
-                // if the neighbor hasnt been visited call dfs on it
-            // return result
+        let result = [];
+        let visited = {};
+        let adjacencyList = this.adjacencyList;
+
+        (function dfs(vertex) {
+            result.push(vertex);
+            visited[vertex] = true;
+            adjacencyList[vertex].forEach(neighbor => {
+                if (!visited[neighbor]) dfs(neighbor);
+            })
+        })(startingVertex);
+        return result;
     }
 
     depthFirstIterative(start) {
