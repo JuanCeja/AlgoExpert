@@ -56,6 +56,10 @@ class Graph {
         }
         return result;
     }
+
+    breadthFirstSearch(start) {
+
+    }
 }
 
 let g = new Graph();
