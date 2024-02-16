@@ -72,5 +72,5 @@ g.addEdge('C', 'E');
 g.addEdge('D', 'E');
 g.addEdge('D', 'F');
 g.addEdge('E', 'F');
-console.log(g.depthFirstIterative('A'));
 console.log(g.depthFirstRecursive('A'));
+console.log(g.depthFirstIterative('A'));
