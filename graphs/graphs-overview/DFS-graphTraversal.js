@@ -40,23 +40,7 @@ class Graph {
     }
 
     depthFirstIterative(start) {
-        let stack = [start];
-        let result = [];
-        let visited = {};
-
-        visited[start] = true;
-        while (stack.length) {
-            let currentVertex = stack.pop();
-            result.push(currentVertex)
-            if (!this.adjacencyList[currentVertex]) continue;
-            this.adjacencyList[currentVertex].forEach(neighbor => {
-                if (!visited[neighbor]) {
-                    visited[neighbor] = true;
-                    stack.push(neighbor);
-                }
-            });
-        }
-        return result;
+        
     }
 }
 
