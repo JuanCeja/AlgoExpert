@@ -25,7 +25,13 @@ class Graph {
     }
 
     depthFirstRecursive(startingVertex) {
-        
+        // result, visited, adjacencyList
+        // our DFS helper function / call startingVertex on it
+            // push the vertex to result
+            // mark it as visited
+            // iterate through the neighbors of our current vertex
+                // if the neighbor hasnt been visited call dfs on it
+            // return result
     }
 
     depthFirstIterative(start) {
@@ -63,4 +69,5 @@ g.addEdge('C', 'E');
 g.addEdge('D', 'E');
 g.addEdge('D', 'F');
 g.addEdge('E', 'F');
-console.log(g.depthFirstIterative('A'));
+// console.log(g.depthFirstIterative('A'));
+console.log(g.depthFirstRecursive('A'));
