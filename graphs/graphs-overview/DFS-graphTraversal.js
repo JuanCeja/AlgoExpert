@@ -58,29 +58,20 @@ class Graph {
     }
 
     breadthFirstSearch(start) {
-        // create a queue and place the starting vertex
         let queue = [start];
-        // create an array to store results
         let results = [];
-        // create an object to stored nodes visited
         let visited = {};
-        // mark the starting vertex as visited
         visited[start] = true;
-        // loop as long as there is anything in the queue
-        while(queue.length) {
-            // remove the first vertex from the queue and push it into the array that stores nodes visited
+        while (queue.length) {
             let currentVertex = queue.shift();
             results.push(currentVertex);
-            // loop over each vertex in the adjacency list for the vertex you are visiting.
             this.adjacencyList[currentVertex].forEach(neighbor => {
-                // if it is not inside the object that stores nodes visited, mark it as visited and enqueue that vertex
-                if(!visited[neighbor]) {
+                if (!visited[neighbor]) {
                     visited[neighbor] = true;
                     queue.push(neighbor);
                 }
             })
         }
-        // once you have finished looping, return the array of visited nodes
         return results;
     }
 }
