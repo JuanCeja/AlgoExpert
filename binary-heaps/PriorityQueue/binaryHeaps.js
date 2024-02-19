@@ -5,7 +5,11 @@ class Heap {
 
     insert(value) {
         // push the value into the values property on the heap
+        this.values.push(value);
+        let parentIndex = Math.floor(((this.values.length - 1) - 1) / 2);
+        
         // bubble the value up to its correct spot
+        if(value > this.values[parentIndex]) this.bubbleUp(value);
     }
 
     bubbleUp(value) {
