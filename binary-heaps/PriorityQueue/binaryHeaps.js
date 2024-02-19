@@ -3,5 +3,7 @@ class Heap {
         this.values = values;
     }
 
-    
+    insert(value) {
+        
+    }
 }
