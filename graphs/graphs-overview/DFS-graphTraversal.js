@@ -25,19 +25,17 @@ class Graph {
     }
 
     depthFirstRecursive(startingVertex) {
-        const result = [];
-        const visited = {};
-        const adjacencyList = this.adjacencyList;
-
-        if (!this.adjacencyList[startingVertex]) return result;
+        let result = [];
+        let visited = {};
+        let adjacencyList = this.adjacencyList;
 
         (function dfs(vertex) {
-            visited[vertex] = true;
             result.push(vertex);
+            visited[vertex] = true;
             adjacencyList[vertex].forEach(neighbor => {
-                if (!visited[neighbor]) return dfs(neighbor);
+                if (!visited[neighbor]) dfs(neighbor);
             })
-        })(startingVertex)
+        })(startingVertex);
         return result;
     }
 
@@ -46,19 +44,35 @@ class Graph {
         let result = [];
         let visited = {};
 
-        visited[start] = true;
         while (stack.length) {
             let currentVertex = stack.pop();
-            result.push(currentVertex)
-            if (!this.adjacencyList[currentVertex]) continue;
+            if (!visited[currentVertex]) {
+                result.push(currentVertex);
+                visited[currentVertex] = true;
+                this.adjacencyList[currentVertex].forEach(neighbor => {
+                    if (!visited[neighbor]) stack.push(neighbor);
+                })
+            }
+        }
+        return result;
+    }
+
+    breadthFirstSearch(start) {
+        let queue = [start];
+        let results = [];
+        let visited = {};
+        visited[start] = true;
+        while (queue.length) {
+            let currentVertex = queue.shift();
+            results.push(currentVertex);
             this.adjacencyList[currentVertex].forEach(neighbor => {
                 if (!visited[neighbor]) {
                     visited[neighbor] = true;
-                    stack.push(neighbor);
+                    queue.push(neighbor);
                 }
-            });
+            })
         }
-        return result;
+        return results;
     }
 }
 
@@ -76,4 +90,6 @@ g.addEdge('C', 'E');
 g.addEdge('D', 'E');
 g.addEdge('D', 'F');
 g.addEdge('E', 'F');
+console.log(g.depthFirstRecursive('A'));
 console.log(g.depthFirstIterative('A'));
+console.log(g.breadthFirstSearch('A'));
