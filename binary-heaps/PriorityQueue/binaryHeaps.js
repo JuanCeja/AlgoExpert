@@ -4,6 +4,7 @@ class Heap {
     }
 
     insert(value) {
-        
+        // push the value into the values property on the heap
+        // bubble the value up to its correct spot
     }
 }
