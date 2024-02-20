@@ -21,7 +21,9 @@ class MaxBinaryHeap {
     }
 
     extractMax() {
-        
+        // swap the first value in the values property with the last one
+        // pop from the values property, so you can return the value at the end
+        // have the new root 'sink down' to the correct spot 
     }
 }
 
