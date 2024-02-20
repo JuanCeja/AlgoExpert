@@ -19,6 +19,10 @@ class MaxBinaryHeap {
             parentIndex = Math.floor((childIndex - 1) / 2)
         }
     }
+
+    extractMax() {
+        
+    }
 }
 
 let heap = new MaxBinaryHeap();
