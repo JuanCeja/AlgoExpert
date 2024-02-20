@@ -1,27 +1,28 @@
-class Heap {
-    constructor(values) {
-        this.values = values;
+class MaxBinaryHeap {
+    constructor() {
+        this.values = [41, 39, 33, 18, 27, 12];
     }
 
     insert(value) {
         this.values.push(value);
-        let parentIndex = Math.floor(((this.values.length - 1) - 1) / 2);
-
-        if (value > this.values[parentIndex]) this.bubbleUp(value);
+        this.bubbleUp();
+        return this;
     }
 
-    bubbleUp(value) {
-        // create a var called index which is the length of the values property - 1
-        let index = this.values.length - 1;
-        // create a var called parentIndex which is the floor of index-1 / 2
-        let parentIndex = Math.floor((index - 1) / 2);
-        // keep looping as long as the values element at the parentIndex is less than the values element at the child index
-        while (this.values[parentIndex] < this.values[index]) {
-            // swap the value of the values element at the parentIndex with the value of the element property at the child index
-            [this.values[parentIndex], this.values[index]][this.values[index], this.values[parentIndex]];
-            // set the index to be the parentIndex, and start over
-            index = parentIndex;
-        }
+    bubbleUp() {
+        let childIndex = this.values.length - 1;
+        let parentIndex = Math.floor((childIndex - 1) / 2);
 
+        while (this.values[parentIndex] < this.values[childIndex]) {
+            [this.values[parentIndex], this.values[childIndex]] = [this.values[childIndex], this.values[parentIndex]];
+            childIndex = parentIndex;
+            parentIndex = Math.floor((childIndex - 1) / 2)
+        }
     }
 }
+
+let heap = new MaxBinaryHeap();
+console.log(heap.insert(55));
+console.log(heap.insert(1));
+console.log(heap.insert(45));
+console.log(heap.insert(199));
