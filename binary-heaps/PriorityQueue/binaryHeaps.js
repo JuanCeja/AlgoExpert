@@ -21,18 +21,25 @@ class MaxBinaryHeap {
     }
 
     extractMax() {
-        // swap the first value in the values property with the last one
-        // pop from the values property, so you can return the value at the end
-        // have the new root 'sink down' to the correct spot 
+        let start = 0;
+        let end = this.values.length - 1;
+        [this.values[start], this.values[end]] = [this.values[end], this.values[start]];
+        let oldRoot = this.values.pop();
+        this.bubbleDown();
+        return oldRoot;
     }
 
     bubbleDown() {
         // your parent index starts at 0 (the root)
+        let parent = 0;
         // find the index of the left child: 2*index + 1
         // find the index of the right child: 2*index + 2
+        let leftChild = (parent * 2) + 1;
+        let rightChild = (parent * 2) + 2;
         // if the left or right child is > than the element...swap. if both left and right children are larger, swap with the largest child
+        if()
         // the child index you swapped to now becomes the new parent index
-        // keep looping and swapping until neither child is largen than any element
+        // keep looping and swapping until neither child is larger than any element
         // return the old root
     }
 }
@@ -42,3 +49,4 @@ console.log(heap.insert(55));
 console.log(heap.insert(1));
 console.log(heap.insert(45));
 console.log(heap.insert(199));
+console.log(heap.extractMax());
