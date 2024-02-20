@@ -25,6 +25,16 @@ class MaxBinaryHeap {
         // pop from the values property, so you can return the value at the end
         // have the new root 'sink down' to the correct spot 
     }
+
+    bubbleDown() {
+        // your parent index starts at 0 (the root)
+        // find the index of the left child: 2*index + 1
+        // find the index of the right child: 2*index + 2
+        // if the left or right child is > than the element...swap. if both left and right children are larger, swap with the largest child
+        // the child index you swapped to now becomes the new parent index
+        // keep looping and swapping until neither child is largen than any element
+        // return the old root
+    }
 }
 
 let heap = new MaxBinaryHeap();
