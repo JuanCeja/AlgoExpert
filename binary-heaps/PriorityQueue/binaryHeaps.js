@@ -25,11 +25,10 @@ class MaxBinaryHeap {
         let end = this.values.length - 1;
         [this.values[start], this.values[end]] = [this.values[end], this.values[start]];
         let oldRoot = this.values.pop();
-        this.bubbleDown();
-        return oldRoot;
+        this.bubbleDown(oldRoot);
     }
 
-    bubbleDown() {
+    bubbleDown(oldRoot) {
         let parent = 0;
         let leftChild = (parent * 2) + 1;
         let rightChild = (parent * 2) + 2;
@@ -50,6 +49,7 @@ class MaxBinaryHeap {
                 parent = rightChild;
             };
         }
+        return oldRoot;
     }
 }
 
