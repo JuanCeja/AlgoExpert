@@ -21,10 +21,18 @@ class MaxBinaryHeap {
     }
 
     extractMax() {
-        
+        const length = this.values.length;
+        [this.values[length - 1], this.values[0]] = [this.values[0], this.values[length - 1]];
+        const end = this.values.pop();
+        this.bubbleDown;
+        return end;
     }
 
     bubbleDown() {
+        let idx = 0;
+        let swap = null;
+        const element = this.values[0];
+        const length = this.values.length;
 
     }
 }
