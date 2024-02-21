@@ -25,29 +25,35 @@ class MaxBinaryHeap {
         let end = this.values.length - 1;
         [this.values[start], this.values[end]] = [this.values[end], this.values[start]];
         let oldRoot = this.values.pop();
-        this.bubbleDown(oldRoot);
+        this.bubbleDown();
+        return oldRoot;
     }
 
-    bubbleDown(oldRoot) {
-        let parent = 0;
-        let leftChild = (parent * 2) + 1;
-        let rightChild = (parent * 2) + 2;
-        while (this.values[parent] < this.values[leftChild] || this.values[parent] < this.values[rightChild]) {
-            if (this.values[parent] < this.values[leftChild] && this.values[parent] < this.values[rightChild]) {
-                if (this.values[leftChild] > this.values[rightChild]) {
-                    [this.values[parent], this.values[leftChild]] = [this.values[leftChild], this.values[parent]];
-                    parent = leftChild;
-                } else {
-                    [this.values[parent], this.values[rightChild]] = [this.values[rightChild], this.values[parent]];
-                    parent = rightChild;
-                };
-            } else if (this.values[leftChild] > this.values[parent]) {
-                [this.values[parent], this.values[leftChild]] = [this.values[leftChild], this.values[parent]];
-                parent = leftChild;
-            } else {
-                [this.values[parent], this.values[rightChild]] = [this.values[rightChild], this.values[parent]];
-                parent = rightChild;
-            };
+    bubbleDown() {
+        let idx = 0;
+        let length = this.values.length;
+        let element = this.values[0];
+
+        while (true) {
+            let leftChildIdx = (idx * 2) + 1;
+            let rightChildIdx = (idx * 2) + 2;
+            let leftChild;
+            let rightChild;
+            let swap = null;
+
+            if(leftChildIdx < length) {
+                leftChild = this.values[leftChildIdx];
+                if(leftChild > element) {
+                    swap = leftChildIdx;
+                }
+            }
+
+            if(rightChildIdx < length) {
+                rightChild = this.values[rightChildIdx];
+                if (rightChild > leftChild) {
+                    swap = rightChildIdx;
+                }
+            }
         }
         return oldRoot;
     }
