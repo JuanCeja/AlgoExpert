@@ -30,17 +30,26 @@ class MaxBinaryHeap {
     }
 
     bubbleDown() {
-        // your parent index starts at 0 (the root)
         let parent = 0;
-        // find the index of the left child: 2*index + 1
-        // find the index of the right child: 2*index + 2
         let leftChild = (parent * 2) + 1;
         let rightChild = (parent * 2) + 2;
-        // if the left or right child is > than the element...swap. if both left and right children are larger, swap with the largest child
-        if()
-        // the child index you swapped to now becomes the new parent index
-        // keep looping and swapping until neither child is larger than any element
-        // return the old root
+        while (this.values[parent] < this.values[leftChild] || this.values[parent] < this.values[rightChild]) {
+            if (this.values[parent] < this.values[leftChild] && this.values[parent] < this.values[rightChild]) {
+                if (this.values[leftChild] > this.values[rightChild]) {
+                    [this.values[parent], this.values[leftChild]] = [this.values[leftChild], this.values[parent]];
+                    parent = leftChild;
+                } else {
+                    [this.values[parent], this.values[rightChild]] = [this.values[rightChild], this.values[parent]];
+                    parent = rightChild;
+                };
+            } else if (this.values[leftChild] > this.values[parent]) {
+                [this.values[parent], this.values[leftChild]] = [this.values[leftChild], this.values[parent]];
+                parent = leftChild;
+            } else {
+                [this.values[parent], this.values[rightChild]] = [this.values[rightChild], this.values[parent]];
+                parent = rightChild;
+            };
+        }
     }
 }
 
