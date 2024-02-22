@@ -18,13 +18,13 @@ class PriorityQueue {
     }
 
     bubbleUp() {
-        let childIndex = this.values.length - 1;
-        let parentIndex = Math.floor((childIndex - 1) / 2);
-
-        while (this.values[parentIndex] < this.values[childIndex]) {
-            [this.values[parentIndex], this.values[childIndex]] = [this.values[childIndex], this.values[parentIndex]];
-            childIndex = parentIndex;
-            parentIndex = Math.floor((childIndex - 1) / 2)
+        let idx = this.values.length - 1;
+        while(idx > 0) {
+            let parentIdx = Math.floor((idx / 2) + 1);
+            if(this.values[idx].priority > this.values[parentIdx].priority) {
+                [this.values[idx], this.values[parentIdx]] = [this.values[parentIdx], this.values[idx]];
+                idx = parentIdx;
+            }
         }
     }
 
